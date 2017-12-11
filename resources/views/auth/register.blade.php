@@ -122,7 +122,8 @@
 
             <button type="submit" class="btn btn-primary btn-block">Sign up for free!</button>
             <hr class="invisible">
-            <button type="button" class="btn btn-primary btn-block"><a href="{{url('login/google')}}"> <span class="icon-google"></span> Login with Google</a></button>
+            <a href="{{url('login/google')}}"><button type="button" class="btn btn-primary btn-block"> 
+            <span class="icon-google"></span> Login with Google</button></a>
 </form>
             <hr class="invisible">
         </div>
@@ -131,7 +132,7 @@
         </div>
     </div>
 
-
+  
     <ul class="nav nav-inline social-share">
       <li class="nav-item"><a class="nav-link" href="https://twitter.com/vitalsware" target="_blank"><span class="icon-twitter"></span> 67+</a></li>
       <li class="nav-item"><a class="nav-link" href="https://www.facebook.com/vitalsware/" target="_blank"><span class="icon-facebook"></span> 279+</a></li>
@@ -143,7 +144,7 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script type="text/javascript" src="{{ asset('js/vitals.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/vitals.min.js') }}"></script>
 
 </body>
 </html>

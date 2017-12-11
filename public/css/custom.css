@@ -120,8 +120,13 @@
 		}
 	}
 
+    .has-icon-left {
+    	z-index: 3;
+    }
 
-
+    .social-share {
+    	margin-bottom: 0rem;
+    }
 
 
 

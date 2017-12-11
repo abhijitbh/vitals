@@ -46,7 +46,7 @@
             &#9776;
           </a>
           <a class="navbar-toggler navbar-toggler-custom hidden-md-up pull-xs-right" data-toggle="collapse" href="#collapsingMobileUser" aria-expanded="false" aria-controls="collapsingMobileUser">
-            <span class="icon-user"></span>
+            <!-- <span class="icon-user"></span> -->
           </a>
           <div id="collapsingNavbar" class="collapse navbar-toggleable-custom" role="tabpanel" aria-labelledby="collapsingNavbar">
             <ul class="nav navbar-nav pull-xs-right">
@@ -83,7 +83,7 @@
             ================================================== -->
             <form class="form-horizontal" method="POST" action="{{ route('login') }}">
              {{ csrf_field() }}
-             <div class="form-group has-icon-left form-control-email form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+             <div class="form-group has-icon-left form-control-email form-group{{ $errors->has('email') ? ' has-error' : '' }}" >
               <label class="sr-only" for="inputEmail">Email address</label>
               <input type="email" class="form-control form-control-lg" id="inputEmail" placeholder="Email address" autocomplete="off" name="email" value="{{ old('email') }}" required autofocus>
               @if ($errors->has('email'))
@@ -112,7 +112,8 @@
 
             <button type="submit" class="btn btn-primary btn-block">Sign in</button>
             <hr class="invisible">
-            <button type="submit" class="btn btn-primary btn-block"><a href="{{ url('login/google') }}"> <span class="icon-google"></span> Login with Google</a>></button>
+            <a href="{{ url('login/google') }}"><button type="submit" class="btn btn-primary btn-block"> 
+            <span class="icon-google"></span> Login with Google</button></a>
             <a class="btn btn-link" href="{{ route('password.request') }}" role="button">
               Forgot Your Password?
             </a>
