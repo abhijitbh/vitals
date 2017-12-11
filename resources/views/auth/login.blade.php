@@ -112,7 +112,7 @@
 
             <button type="submit" class="btn btn-primary btn-block">Sign in</button>
             <hr class="invisible">
-            <a href="{{ url('login/google') }}"><button type="submit" class="btn btn-primary btn-block"> 
+            <a href="{{ url('login/google') }}"><button type="button" class="btn btn-primary btn-block"> 
             <span class="icon-google"></span> Login with Google</button></a>
             <a class="btn btn-link" href="{{ route('password.request') }}" role="button">
               Forgot Your Password?
