@@ -50,9 +50,6 @@
         </a>
         <div id="collapsingNavbar" class="collapse navbar-toggleable-custom" role="tabpanel" aria-labelledby="collapsingNavbar">
             <ul class="nav navbar-nav pull-xs-right">
-              <li class="nav-item nav-item-toggable">
-                <a class="nav-link" href="./index-carousel.html"><small>NEW</small> Slides<span class="sr-only">(current)</span></a>
-            </li>
             <li class="nav-item nav-item-toggable">
                 <a class="nav-link" href="http://www.vitalsware.com/products" target="_blank">Products</a>
             </li>
