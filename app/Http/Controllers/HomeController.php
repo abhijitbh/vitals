@@ -57,7 +57,7 @@ class HomeController extends Controller
             'about_me' => $data['about_me'],
         ]);
 
-        return redirect()->route('home');
+        return redirect()->route('profile');
     }
 
     protected function validator(array $data)

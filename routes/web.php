@@ -21,7 +21,7 @@ Route::post('/update', 'HomeController@updateProfile')->name('update_profile');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+Route::get('/profile', 'HomeController@dashboard')->name('profile');
 
 Route::get('login/google', 'Auth\LoginController@socialLogin');
 
