@@ -122,11 +122,51 @@
 
     .has-icon-left {
     	z-index: 3;
+    	background-image: url(../img/arrow.png);
     }
 
     .social-share {
     	margin-bottom: 0rem;
     }
+
+    .module-data {
+    	border: 2px dashed grey;
+    	padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .product-row {
+	    border: 0px dotted grey;
+	    padding-top: 5px;
+	    padding-bottom: 5px;
+    }
+
+    .product-text {
+    	padding-left: 25px;
+    	margin-bottom: -15px;
+    	margin-top: 8px;
+        line-height: 0.5em;
+    }
+
+    .toggle-mode {
+     	margin-left: 945px;
+    }
+
+    .module-btn {
+    	background-color: green;
+    	color: white;
+    	margin-top: 40px;
+    	margin-left: 300px;
+    }
+    .module-btn:hover {
+    	background-color: green;color: white;
+    }
+
+
+.btn-default.btn-on.active{background-color: green;color: white;}
+.btn-default.btn-off.active{background-color: red;color: white;}
+
+   
 
 
 

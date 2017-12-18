@@ -20,6 +20,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('logusersactivity');
     }
 
     /**
@@ -56,8 +57,8 @@ class HomeController extends Controller
             'postal_code' => $data['postal_code'],
             'about_me' => $data['about_me'],
         ]);
+        return redirect('/profile');
 
-        return redirect()->route('profile');
     }
 
     protected function validator(array $data)

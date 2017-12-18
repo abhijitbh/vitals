@@ -48,7 +48,7 @@
             <a href="" class="simple-text">
                 <span><img src="{{ asset('/img/vitals.png') }}"></img></span>
          </a>
-     </div>
+       </div>
 
      <ul class="nav">
         <li class="active">
@@ -63,7 +63,6 @@
                 <p>User Profile</p>
             </a>
         </li>
-
     </ul>
 </div>
 </div>

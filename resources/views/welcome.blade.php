@@ -95,7 +95,13 @@
         <h1 class="intro-content">Our awesome solutions will make your life a lot easier.</h1>
         <h2 class="m-b-3">Great care takes <em>great software</em></h2>
         @auth
-        <a href="{{ url('/home') }}">Home</a>
+          
+          @if( Auth::user()->admin == 2 )
+            <a href="{{ url('/userproduct') }}">Home</a>
+          @else
+            <a href="{{ url('/home') }}">Home</a>
+          @endif
+
         @else
 
 

@@ -11,18 +11,44 @@
 |
 */
 
+
+
+
+
+
+Route::domain('{company}.vitals.com')->group(function () {
+
+	Auth::routes();
+
+	Route::get('/', function () {
+	    return view('welcome');
+	});	
+
+	Route::get('/home', 'HomeController@index')->name('home');
+
+	Route::get('/profile', 'HomeController@dashboard')->name('profile');
+
+	Route::post('/update', 'HomeController@updateProfile')->name('update_profile');
+});
+
+
+/*<!-- Admin routes--> */
+
+Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('/module/{id}', 'AdminController@module')->name('module');
 
-Route::post('/update', 'HomeController@updateProfile')->name('update_profile');
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/profile', 'HomeController@dashboard')->name('profile');
+Route::get('/userproduct', 'AdminController@showuser')->name('userproduct');
 
 Route::get('login/google', 'Auth\LoginController@socialLogin');
 
 Route::get('login/google/callback', 'Auth\LoginController@socialLogin');
+
+Route::post('/module/{id}', 'AdminController@store');
+
+Route::post('/approveuser/{id}/{flag}', 'AdminController@approveUser');
+

@@ -8,6 +8,7 @@ use Socialite;
 use App\User;
 use Illuminate\Http\Request;
 use App\AuthenticateUser; 
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -29,7 +30,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+//    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -56,7 +57,21 @@ class LoginController extends Controller
      */
     public function userHasLoggedIn($user)
     {
-        return redirect('/home');
+        if(Auth::admin == 2){
+            return redirect('/userproduct');
+        }else{
+            return redirect('/home');
+        }
+
+    }
+
+    protected function redirectTo()
+    {
+       if(Auth::user()->admin == 2){
+            return '/userproduct';
+        }else{
+            return '/home';
+        }
     }
 
 }

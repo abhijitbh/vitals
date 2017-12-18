@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -29,6 +29,7 @@
   <meta name="theme-color" content="#663fb5">
   <link rel="stylesheet" href="{{ asset('css/vitals.css') }}">
   <link rel="stylesheet" href="{{ asset('/css/custom.css') }}">
+
 </head>
 
 <body>
@@ -117,6 +118,17 @@
               <input type="password" class="form-control form-control-lg" id="inputPassword" placeholder="Confirm password" autocomplete="off" name="password_confirmation">
           </div>
 
+            
+          <div class="form-group has-icon-left form-control-company form-group{{ $errors->has('company') ? ' has-error' : '' }}">
+         <!--   <span><img src="{{ asset('/img/arrow.png') }}"></img></span> -->
+              <select class="form-control form-control-lg" name="company" >
+              <option id="company" value="">Select Company</option>
+                @foreach($company as $key => $value)
+                <option value="{{$value->id}}">{{$value->name}}</option>
+                @endforeach
+             </select>
+          </div>
+          
           <!-- Buttons
             ================================================== -->
 

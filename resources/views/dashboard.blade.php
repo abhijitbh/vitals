@@ -58,8 +58,6 @@
                         <p>User Profile</p>
                     </a>
                 </li>
-
-
             </ul>
         </div>
     </div>
@@ -111,7 +109,7 @@
                         <h4 class="title">Edit Profile</h4>
                     </div>
                     <div class="content">
-                        <form  method="POST" action="{{ route('update_profile') }}">
+                        <form  method="POST" action="/update">
                             {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-md-12">

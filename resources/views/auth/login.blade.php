@@ -85,7 +85,7 @@
              {{ csrf_field() }}
              <div class="form-group has-icon-left form-control-email form-group{{ $errors->has('email') ? ' has-error' : '' }}" >
               <label class="sr-only" for="inputEmail">Email address</label>
-              <input type="email" class="form-control form-control-lg" id="inputEmail" placeholder="Email address" autocomplete="off" name="email" value="{{ old('email') }}" required autofocus>
+              <input type="email" class="form-control form-control-lg" id="inputEmail" placeholder="Email address"  name="email" value="{{ old('email') }}" required autofocus>
               @if ($errors->has('email'))
               <span class="help-block">
                 <strong>{{ $errors->first('email') }}</strong>
@@ -160,7 +160,6 @@
         });
       });
     }
-
   </script>
 </body>
 </html>
