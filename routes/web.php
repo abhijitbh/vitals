@@ -11,11 +11,6 @@
 |
 */
 
-
-
-
-
-
 Route::domain('{company}.vitals.com')->group(function () {
 
 	Auth::routes();
@@ -52,3 +47,4 @@ Route::post('/module/{id}', 'AdminController@store');
 
 Route::post('/approveuser/{id}/{flag}', 'AdminController@approveUser');
 
+Route::post('/register', 'EmailController@send');

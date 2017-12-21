@@ -1,13 +1,12 @@
 <?php
 
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
 
-class UserProduct extends Model
+class Modules extends Model
 {
 
-	protected $table = 'user_product';
+	protected $table = 'modules';
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +14,7 @@ class UserProduct extends Model
      * @var array
      */
     protected $fillable = [
-       'id',  'uid', 'toggle','module_id',
+       'id',  'module_name',
     ];
 
 

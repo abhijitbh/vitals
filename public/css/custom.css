@@ -149,18 +149,21 @@
     }
 
     .toggle-mode {
-     	margin-left: 945px;
+     	margin-left: 865px;
     }
 
     .module-btn {
     	background-color: green;
     	color: white;
     	margin-top: 40px;
-    	margin-left: 300px;
+    	margin-left: 75px;
     }
     .module-btn:hover {
     	background-color: green;color: white;
     }
+    body {
+  overflow-x: hidden;
+}
 
 
 .btn-default.btn-on.active{background-color: green;color: white;}

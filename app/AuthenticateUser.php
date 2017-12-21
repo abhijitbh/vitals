@@ -56,8 +56,6 @@ class AuthenticateUser
         return $this->socialite->driver('google')->redirect();
     }
 
-
-
     /**
      * @return \Laravel\Socialite\Contracts\User
      */
@@ -65,6 +63,4 @@ class AuthenticateUser
     {
         return $this->socialite->driver('google')->user();
     }
-
-
 }

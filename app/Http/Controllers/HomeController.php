@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\User;
 
 class HomeController extends Controller
@@ -40,7 +41,16 @@ class HomeController extends Controller
      */
     public function dashboard()
     {
-        return view('dashboard');
+        $activemodules = DB::table('modules')
+                  ->select('user_product.module_id','user_product.toggle', 
+                          'modules.module_name')
+                  ->leftJoin('user_product', 'user_product.module_id', '=', 'modules.id')
+                  ->where('user_product.uid', Auth::user()->id)
+                  ->where('user_product.toggle', 1)
+                  ->get();
+
+
+        return view('dashboard', ['activemodules' => $activemodules ]);
     }
 
 

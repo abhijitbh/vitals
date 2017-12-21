@@ -9,6 +9,8 @@
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
 
 
     <!-- Bootstrap core CSS     -->
@@ -61,6 +63,11 @@
 
 
 <div class="main-panel">
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
     <nav class="navbar navbar-default navbar-fixed">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -102,68 +109,23 @@
 <form action="" method="post">
 
 {{ csrf_field() }}
-
-    <div class="row product-row">
-    <div class="product-text">Lead & Referral Management (CRM)</div>
-        <div class="col-md-5 toggle-mode">
-            <div class="btn-group" id="status" data-toggle="buttons">
-              <label class="btn btn-default btn-on btn-xs active">
-              <input type="radio" value="1" class="toggle-type" id="sft" name="toggle_type[CRM]" >ON</label>
-              <label class="btn btn-default btn-off btn-xs ">
-              <input type="radio" value="0" id="sft" name="toggle_type[CRM]">OFF</label>
-            </div>
-        </div>
-    </div>
-
-    <div class="row product-row">
-     <div class="product-text">Census & Occupancy Tracking</div>
-        <div class="col-md-5 toggle-mode">
-            <div class="btn-group" id="status" data-toggle="buttons">
-              <label class="btn btn-default btn-on btn-xs active">
-              <input type="radio" value="1" class="toggle-type" name="toggle_type[CCT]" >ON</label>
-              <label class="btn btn-default btn-off btn-xs ">
-              <input type="radio" value="0" name="toggle_type[CCT]">OFF</label>
-            </div>
-        </div>
-    </div>
-  
-    <div class="row product-row">
-    <div class="product-text">Resident Care: Assessments & Care Plans</div>
-        <div class="col-md-5 toggle-mode">
-            <div class="btn-group" id="status" data-toggle="buttons">
-              <label class="btn btn-default btn-on btn-xs active">
-              <input type="radio" value="1" class="toggle-type" name="toggle_type[ACP]" >ON</label>
-              <label class="btn btn-default btn-off btn-xs ">
-              <input type="radio" value="0" name="toggle_type[ACP]">OFF</label>
-            </div>
-        </div>
-    </div>
     
-    <div class="row product-row">
-    <div class="product-text">Incident Tracking</div>
+    @foreach($userProduct as $module)
+    <div class="row product-row">    
+    <div class="product-text">{{$module->module_name}}</div>
         <div class="col-md-5 toggle-mode">
             <div class="btn-group" id="status" data-toggle="buttons">
-              <label class="btn btn-default btn-on btn-xs active">
-              <input type="radio" value="1" class="toggle-type" name="toggle_type[IT]" >ON</label>
-              <label class="btn btn-default btn-off btn-xs ">
-              <input type="radio" value="0" name="toggle_type[IT]">OFF</label>
+              <label class="btn btn-default btn-on btn-xs @if($module->toggle == 1 ) {{'active'}} @endif">
+                
+              <input type="radio" value="1"  name="toggle_type[{{$module->module_id}}]" @if($module->toggle == 1 ) {{ 'checked="checked"'}} @endif >ON</label>
+              <label class="btn btn-default btn-off btn-xs @if($module->toggle == 0 ) {{'active'}} @endif">
+              <input type="radio" value="0" name="toggle_type[{{$module->module_id}}]" @if($module->toggle == 0 ) {{ 'checked="checked"'}} @endif>OFF</label>
             </div>
         </div>
     </div>
+    @endforeach
 
-    <div class="row product-row">
-     <div class="product-text">Billing & Accounts Receivable (A/R)</div>
-        <div class="col-md-5 toggle-mode">
-            <div class="btn-group" id="status" data-toggle="buttons">
-              <label class="btn btn-default btn-on btn-xs active">
-              <input type="radio" value="1" class="toggle-type" name="toggle_type[A/R]" >ON</label>
-              <label class="btn btn-default btn-off btn-xs ">
-              <input type="radio" value="0" name="toggle_type[A/R]">OFF</label>
-            </div>
-        </div>
-    </div>
-
-    <button type="submit" class="btn btn-success module-btn">Submit</button>
+    <button type="submit" class="btn btn-info btn-fill module-btn">Save</button>
     </form>
 </div>
 
@@ -206,8 +168,7 @@
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
 <script type="text/javascript">
-
- $(document).ready(function(){
+        $(document).ready(function(){
 
             demo.initChartist();
 
@@ -219,8 +180,7 @@
                 type: 'info',
                 timer: 4000
             });
-});
 
-});
+        });
     </script>
 </html>

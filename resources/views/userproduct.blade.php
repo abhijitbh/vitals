@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="assets/img/favicon.ico">
+   <!--  <link rel="icon" type="image/png" href="assets/img/favicon.ico"> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
     <title>Vitals Dashboard</title>
@@ -10,7 +10,7 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- Bootstrap core CSS     -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
 
@@ -117,13 +117,17 @@
       <td>{{ $usr->email }}</td>
       <td>{{ $usr->address }}</td>
       <td>{{ $usr->city }}</td>
-      <td>{{ $usr->country }}</td>
-      <td><a class="btn btn-primary" href="{{ URL::to('module/'.$usr->id) }}" role="button">Select a Module</a>
+      <td>{{ $usr->country }} </td>
+
+      <td><a class="btn btn-info btn-fill" href="{{ URL::to('module/'.$usr->id) }}" role="button">Select a Module</a>
       </td>
       <td> 
         <div class="btn-group" id="status" data-toggle="buttons">
-            <input type="button" value="Approve" data="{{ $usr->id }}" class="toggle-type" id="approve_button" checked="checked">
-            <input type="button" value="Unapprove" data="{{ $usr->id }}" class="toggle-type" id="unapprove_button" checked="checked">
+          @if($usr->status == 0 )
+            <input type="button" id="ap" value="Approve" data="{{ $usr->id }}" class="toggle-type approve_button btn btn-primary" >
+          @else 
+            <input type="button" id="nap" value="Unapprove" data="{{ $usr->id }}" class="toggle-type unapprove_button btn btn-primary" >
+          @endif
         </div>
       </td>
     </tr>
@@ -170,38 +174,33 @@
   $(document).ready(function(){
 
 
-    $("#approve_button").click(function(){
-       var $id = $(this).attr('data');
-       $("#approve_button").hide();
-       $("#unapprove_button").show();
+    $(".approve_button").click(function(){
+      var $id = $(this).attr('data');
+      console.log($id);
         $.ajax({
             headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
           method: "POST",
           url: "approveuser/"+ $id+"/1",
-          // data: '1',
-          data: "{}",
         })
         .done(function(response) {
-          alert( "user Activated" );
+          location.reload();
         });
     });
 
-     $("#unapprove_button").click(function(){
+     $(".unapprove_button").click(function(){
        var $id = $(this).attr('data');
-       $("#unapprove_button").hide();
-       $("#approve_button").show();
+       console.log($id);
         $.ajax({
           headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           },
           method: "POST",
           url: "approveuser/"+ $id+"/0",
-          // data: '0,'
         })
         .done(function( msg ) {
-          alert( "user Deactivated" );
+          location.reload();
         });
 
     });
