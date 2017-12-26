@@ -90,10 +90,6 @@
       </div>
   </div>
 </div>
-
-        <!-- <div class="cmb-3"><a href="" ><img src="img/play-button.png" class="video-link"></a></div>
-        -->
-
         <div id="sign">
             @if (session('status'))
               <span class="help-block">
@@ -101,6 +97,7 @@
               </span>
             @endif
         </div>
+
         <h4 class="text-muted landing-heading"><b>HELLO, WELCOME TO VITALS</b></h4>
         <h1 class="intro-content">Our awesome solutions will make your life a lot easier.</h1>
         <h2 class="m-b-3">Great care takes <em>great software</em></h2>

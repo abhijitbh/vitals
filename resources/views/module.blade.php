@@ -25,7 +25,7 @@
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="{{ asset('css/demo.css') }}" rel="stylesheet" />
-    
+
     <!-- css for custom one -->
 
     <link rel="stylesheet" href="{{ asset('/css/custom.css') }}">
@@ -80,7 +80,7 @@
                 <a class="navbar-brand" href="{{ url('/profile') }}">{{ Auth::user()->name }}</a>
             </div>
                 <div class="collapse navbar-collapse">
-                    
+
                     <ul class="nav navbar-nav navbar-right">
                             <li>
                              <a href="{{ url('/profile') }}">
@@ -109,14 +109,14 @@
 <form action="" method="post">
 
 {{ csrf_field() }}
-    
+
     @foreach($userProduct as $module)
-    <div class="row product-row">    
+    <div class="row product-row">
     <div class="product-text">{{$module->module_name}}</div>
         <div class="col-md-5 toggle-mode">
             <div class="btn-group" id="status" data-toggle="buttons">
               <label class="btn btn-default btn-on btn-xs @if($module->toggle == 1 ) {{'active'}} @endif">
-                
+
               <input type="radio" value="1"  name="toggle_type[{{$module->module_id}}]" @if($module->toggle == 1 ) {{ 'checked="checked"'}} @endif >ON</label>
               <label class="btn btn-default btn-off btn-xs @if($module->toggle == 0 ) {{'active'}} @endif">
               <input type="radio" value="0" name="toggle_type[{{$module->module_id}}]" @if($module->toggle == 0 ) {{ 'checked="checked"'}} @endif>OFF</label>
