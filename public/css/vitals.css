@@ -7686,7 +7686,7 @@ a.bg-danger:hover {
     color: #fff
 }
 .bg-inverse-custom {
-    margin-top: 1.1875rem;
+    margin-top: -0.8125rem;
     background-color: transparent
 }
 .bg-white {
@@ -7827,7 +7827,7 @@ a.bg-danger:hover {
         background-color: #fff
     }
     .bg-inverse-custom .navbar-nav .nav-link {
-        padding: 1rem;
+        padding: 0.5rem;
         color: #6f788c
     }
     .bg-inverse-custom .navbar-nav .nav-link:focus,

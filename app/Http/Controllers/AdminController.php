@@ -16,7 +16,7 @@ use Session;
 
 class AdminController extends Controller
 {
-    
+
     public function __construct()
     {
         $this->middleware('isadmin');
@@ -27,14 +27,14 @@ class AdminController extends Controller
     public function module(Request $request, $id)
     {
         $userProduct = DB::table('modules')
-                    ->select('modules.id as module_id','user_product.toggle', 
+                    ->select('modules.id as module_id','user_product.toggle',
                             'modules.module_name')
                     ->leftJoin('user_product', 'user_product.module_id', '=', 'modules.id')
                     ->where('user_product.uid', $id )->get();
         return view('module',['userProduct' => $userProduct]);
     }
 
-    public function showuser() 
+    public function showuser()
     {
         $users = DB::table('users')
                 ->select('users.name','users.email', 'users.address','users.city','users.country','users.status','users.id','company.domain_name', 'company.name as company_name')
@@ -43,8 +43,8 @@ class AdminController extends Controller
         return view('userproduct', ['users' => $users]);
     }
 
-    public function store(Request $request, $id) 
-    {  
+    public function store(Request $request, $id)
+    {
     $data = collect(Input::get('toggle_type'));
 
     UserProduct::where('uid', $id )->delete();
@@ -54,12 +54,12 @@ class AdminController extends Controller
       $userProduct->toggle = $value;
       $userProduct->module_id = $key;
       $userProduct->save();
-        }   
+        }
     $userProduct = DB::table('modules')
-                    ->select('modules.id as module_id','user_product.toggle', 
+                    ->select('modules.id as module_id','user_product.toggle',
                             'modules.module_name')
                     ->leftJoin('user_product', 'user_product.module_id', '=', 'modules.id')
-                    ->where('user_product.uid', $id )->get(); 
+                    ->where('user_product.uid', $id )->get();
 
     return view('module',['userProduct' => $userProduct])->with('status', 'Module updated!');
     }
@@ -74,9 +74,8 @@ class AdminController extends Controller
                       ->leftJoin('company', 'users.cid', '=', 'company.id')
                       ->where('users.id', '=', [$id])->first();
 
-
-        if( $flag == 1){
+        /*if( $flag == 1){
           Mail::to(Auth::user()->email)->send(new ActivationMail( $updatedUser ));
-        }
-    }  
+        }*/
+    }
 }

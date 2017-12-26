@@ -52,7 +52,7 @@
 	}
 
 	.jumbotron .btn{
-		padding:1.2rem 0rem;
+		padding:1.2rem 1rem;
 	}
 	.sign-form {
 		width: 15rem;
@@ -171,7 +171,7 @@
     }
 
     .toggle-mode {
-     	margin-left: 745px;
+     	text-align: right;
     }
 
     .module-btn {
@@ -182,6 +182,10 @@
     }
     .module-btn:hover {
     	background-color: green;color: white;
+    }
+    .user-button {
+    	padding: 8px 15px;
+    	width:100px;
     }
     body {
   overflow-x: hidden;

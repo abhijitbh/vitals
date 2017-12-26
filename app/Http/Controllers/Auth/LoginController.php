@@ -54,7 +54,7 @@ class LoginController extends Controller
 
             //return $this->userHasLoggedIn( Auth::user() );
         } else {
-            return redirect()->intended('/login')->with('status', 'Invalid Credentials or your account is not active');
+            return redirect()->intended('/login')->with('status', 'Your account is deactivated please contact adminstrator');
         }
     }
 

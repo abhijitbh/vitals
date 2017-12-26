@@ -63,11 +63,11 @@
 
 
 <div class="main-panel">
-@if (session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
-@endif
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
     <nav class="navbar navbar-default navbar-fixed">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -110,10 +110,10 @@
 
 {{ csrf_field() }}
 
-    @foreach($userProduct as $module)
+ @foreach($userProduct as $module)
     <div class="row product-row">
-    <div class="product-text">{{$module->module_name}}</div>
-        <div class="col-md-5 toggle-mode">
+        <div class="col-md-8"> <p class="product-text">{{$module->module_name}}</p    ></div>
+        <div class="col-md-4 toggle-mode">
             <div class="btn-group" id="status" data-toggle="buttons">
               <label class="btn btn-default btn-on btn-xs @if($module->toggle == 1 ) {{'active'}} @endif">
 

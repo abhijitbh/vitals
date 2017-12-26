@@ -28,7 +28,7 @@
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    
+
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="{{ asset('css/pe-icon-7-stroke.css') }}" rel="stylesheet" />
 
@@ -49,7 +49,7 @@
                 </div>
 
                 <ul class="nav">
-                 
+
                 <li class="active">
                     <a href="{{ url('/userproduct') }}">
                     <i class="pe-7s-user"></i>
@@ -74,7 +74,7 @@
                     <a class="navbar-brand" href="{{ url('/profile') }}"> {{ Auth::user()->name }} </a>
                 </div>
                 <div class="collapse navbar-collapse">
-            
+
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                        <a href="{{ url('/profile') }}">
@@ -121,12 +121,12 @@
 
       <td><a class="btn btn-info btn-fill" href="{{ URL::to('module/'.$usr->id) }}" role="button">Select a Module</a>
       </td>
-      <td> 
+      <td>
         <div class="btn-group" id="status" data-toggle="buttons">
           @if($usr->status == 0 )
-            <input type="button" id="ap" value="Approve" data="{{ $usr->id }}" class="toggle-type approve_button btn btn-primary" >
-          @else 
-            <input type="button" id="nap" value="Unapprove" data="{{ $usr->id }}" class="toggle-type unapprove_button btn btn-primary" >
+            <input type="button" value="Approve" data="{{ $usr->id }}" class="toggle-type approve_button btn btn-primary user-button" >
+          @else
+            <input type="button" value="Unapprove" data="{{ $usr->id }}" class="toggle-type unapprove_button btn btn-primary user-button" >
           @endif
         </div>
       </td>
@@ -167,12 +167,12 @@
   <!-- <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> -->
 
   <script type="text/javascript">
-  
+
   </script>
 <script type="text/javascript">
-  
-  $(document).ready(function(){
 
+  $(document).ready(function(){
+    clicked = true;
 
     $(".approve_button").click(function(){
       var $id = $(this).attr('data');

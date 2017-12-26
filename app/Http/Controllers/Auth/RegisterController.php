@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Company;
+use App\UserProduct;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
@@ -83,7 +85,7 @@ class RegisterController extends Controller
 
         // user Registration
         if(($data['is_company']== 1)) {
-            return User::create([
+            $user = User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
@@ -91,6 +93,16 @@ class RegisterController extends Controller
                 'admin' => ($data['is_company']) ? 1 : 2 ,
                 'status' => 1,
             ]);
+
+
+            foreach (DB::table('modules')->get() as $key => $module) {
+                $userProduct = new UserProduct;
+                $userProduct->uid = $user->id;
+                $userProduct->toggle = 0;
+                $userProduct->module_id = $module->id;
+                $userProduct->save();
+            }
+            return $user;
         }
     }
 }
