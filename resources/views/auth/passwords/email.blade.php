@@ -55,7 +55,7 @@
             </li>
             <li class="nav-item nav-item-toggable">
                 <a class="nav-link" href="http://www.vitalsware.com/case-studies" target="_blank">Case Studies</a>
-            </li> 
+            </li>
             <li class="nav-item nav-item-toggable">
                 <a class="nav-link" href="http://www.vitalsware.com/blog" target="_blank">Blog</a>
             </li>
@@ -70,14 +70,14 @@
       <header class="jumbotron bg-inverse text-xs-center center-vertically" role="banner">
         <div class="container">
 
-           
+
            <div class="row justify-content-center">
               <div class="col-md-4">
               </div>
 
               <div class="col-md-4">
 
-                <a class="btn btn-secondary-outline m-b-1 signup-lable signup-lable-pwd" disabled>Reset Password</a>
+                <a class="btn btn-secondary-outline m-b-1 signup-lable signup-lable-pwd reset-pwd" disabled>Reset Password</a>
                 @if (session('status'))
                 <div class="alert alert-success">
                     {{ session('status') }}
@@ -86,7 +86,7 @@
           <!-- Forms
             ================================================== -->
 
-            <form class="form-horizontal" method="POST" action="{{ route('password.email') }}">
+            <form class="form-horizontal reset-form" method="POST" action="{{ route('password.email') }}">
                 {{ csrf_field() }}
                 <div class="form-group has-icon-left form-control-email">
                   <label class="sr-only" for="inputEmail">Email address</label>
@@ -98,7 +98,7 @@
                 </span>
                 @endif
             </div>
-            
+
 
           <!-- Buttons
             ================================================== -->

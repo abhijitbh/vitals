@@ -84,9 +84,11 @@ return [
     |
     */
 
-    'username' => env('abhijitbh.aloha@gmail.com'),
+    'username' => env('MAIL_USERNAME', 'abhijitbh.aloha@gmail.com'),
 
-    'password' => env('aloha@123'),
+    'password' => env('MAIL_PASSWORD', 'aloha@123'),
+
+    'pretend' => false,
 
     /*
     |--------------------------------------------------------------------------

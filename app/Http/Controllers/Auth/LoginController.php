@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Socialite;
-use App\User;
 use Illuminate\Http\Request;
-use App\AuthenticateUser; 
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use App\User;
+use App\Company;
+use App\AuthenticateUser;
+use Socialite;
 
 class LoginController extends Controller
 {
@@ -32,6 +33,31 @@ class LoginController extends Controller
      */
     // protected $redirectTo = '/home';
 
+
+    /**
+     * Handle an authentication attempt.
+     *
+     * @return Response
+     */
+    public function login(Request $request,$company = '')
+    {
+        if (Auth::attempt(['email' => request('email'), 'password' => request('password'), 'status' => 1])) {
+
+            $companyname = $request->route('company');
+            $domain = Company::where('domain_name', '=', $companyname);
+
+            if($domain) {
+                return $this->userHasLoggedIn( Auth::user() );
+            } else {
+                return response()->view('errors.nouser', compact('CompanyUsername'));
+            }
+
+            //return $this->userHasLoggedIn( Auth::user() );
+        } else {
+            return redirect()->intended('/login')->with('status', 'Invalid Credentials or your account is not active');
+        }
+    }
+
     /**
      * Create a new controller instance.
      *
@@ -42,7 +68,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    
+
     public function socialLogin(AuthenticateUser $authenticateUser, Request $request){
         $hasCode = $request->has('code');
         return $authenticateUser->execute($hasCode, $this);
@@ -56,23 +82,10 @@ class LoginController extends Controller
      */
     public function userHasLoggedIn($user)
     {
-        if(Auth::admin == 2){
+        if($user->admin == 2){
             return redirect('/userproduct');
         }else{
             return redirect('/home');
         }
-
     }
-
-    protected function redirectTo()
-    {
-       if(Auth::user()->admin == 2){
-            return '/userproduct';
-        }else{
-            return '/home';
-        }
-    }
-
-
-
 }

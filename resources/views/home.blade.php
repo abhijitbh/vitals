@@ -63,6 +63,16 @@
                 <p>User Profile</p>
             </a>
         </li>
+   
+        @foreach($activemodules as $module)
+            <li>
+                    <a href="#">
+                        <i class="pe-7s-graph"></i>
+                        <p>{{ $module->module_name}}</p>
+                    </a>
+            </li>
+        @endforeach
+
     </ul>
 </div>
 </div>

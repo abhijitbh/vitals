@@ -46,19 +46,42 @@
 	color:#d66131;
 }
 
-@media (min-width: 768px) and (max-width: 900px) { 
+@media (min-width: 768px) and (max-width: 900px) {
 	.signup-lable{
-		margin-left: -15%;
+		margin-left: 0%;
 	}
 
 	.jumbotron .btn{
-		padding:1.2rem 1rem;
+		padding:1.2rem 0rem;
 	}
+	.sign-form {
+		width: 15rem;
+	}
+	.reset-form {
+		width: 15rem;
+	}
+	.reset-pwd {
+		width: 15rem;
+	}
+	.login-form {
+		width: 15rem;
+	}
+	.toggle-mode {
+     	margin-left: 720px;
+    }
+    .wrapper {
+    	width: 100rem;
+    }
  }
 
 
+@media (min-width: 320px) and (max-width: 425px) {
+	.wrapper {
+    	width: 100rem;
+    }
+ }
 
-@media (min-width: 320px) and (max-width: 338px) { 
+@media (min-width: 320px) and (max-width: 338px) {
 	.signup-lable{
 		margin-left: -8%;
 	}
@@ -122,7 +145,6 @@
 
     .has-icon-left {
     	z-index: 3;
-    	background-image: url(../img/arrow.png);
     }
 
     .social-share {
@@ -149,14 +171,14 @@
     }
 
     .toggle-mode {
-     	margin-left: 865px;
+     	margin-left: 860px;
     }
 
     .module-btn {
     	background-color: green;
     	color: white;
     	margin-top: 40px;
-    	margin-left: 75px;
+    	margin-left: 430px;
     }
     .module-btn:hover {
     	background-color: green;color: white;
@@ -169,7 +191,6 @@
 .btn-default.btn-on.active{background-color: green;color: white;}
 .btn-default.btn-off.active{background-color: red;color: white;}
 
-   
 
 
 
@@ -198,5 +219,5 @@
 
 
 
-	
-	
+
+

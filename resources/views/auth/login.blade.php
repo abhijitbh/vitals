@@ -29,6 +29,7 @@
   <meta name="theme-color" content="#663fb5">
   <link  href="{{ asset('css/vitals.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('/css/custom.css') }}">
+  <link rel="stylesheet" href="{{ asset('/css/custom.css') }}">
 </head>
 
 <body>
@@ -55,7 +56,7 @@
               </li>
               <li class="nav-item nav-item-toggable">
                 <a class="nav-link" href="http://www.vitalsware.com/case-studies" target="_blank">Case Studies</a>
-              </li> 
+              </li>
               <li class="nav-item nav-item-toggable">
                 <a class="nav-link" href="http://www.vitalsware.com/blog" target="_blank">Blog</a>
               </li>
@@ -78,10 +79,16 @@
           <div class="col-md-4">
 
             <a class="btn btn-secondary-outline m-b-1 signup-lable" disabled>Login to Vitals Dashboard</a>
-
+            <div>
+            @if (session('status'))
+              <span class="help-block">
+                <strong> {{ session('status') }} </strong>
+              </span>
+            @endif
+            </div>
           <!-- Forms
             ================================================== -->
-            <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+            <form class="form-horizontal login-form" method="POST" action="{{ route('login') }}">
              {{ csrf_field() }}
              <div class="form-group has-icon-left form-control-email form-group{{ $errors->has('email') ? ' has-error' : '' }}" >
               <label class="sr-only" for="inputEmail">Email address</label>
@@ -112,7 +119,7 @@
 
             <button type="submit" class="btn btn-primary btn-block">Sign in</button>
             <hr class="invisible">
-            <a href="{{ url('login/google') }}"><button type="button" class="btn btn-primary btn-block"> 
+            <a href="{{ url('login/google') }}"><button type="button" class="btn btn-primary btn-block">
             <span class="icon-google"></span> Login with Google</button></a>
             <a class="btn btn-link" href="{{ route('password.request') }}" role="button">
               Forgot Your Password?

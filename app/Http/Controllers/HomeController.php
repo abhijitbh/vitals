@@ -22,6 +22,7 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('logusersactivity');
+        $this->middleware('checksubdomain');
     }
 
     /**
@@ -31,7 +32,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $activemodules = DB::table('modules')
+                  ->select('user_product.module_id','user_product.toggle', 
+                          'modules.module_name')
+                  ->leftJoin('user_product', 'user_product.module_id', '=', 'modules.id')
+                  ->where('user_product.uid', Auth::user()->id)
+                  ->where('user_product.toggle', 1)
+                  ->get();
+
+
+        return view('home', ['activemodules' => $activemodules ]);
     }
 
     /**

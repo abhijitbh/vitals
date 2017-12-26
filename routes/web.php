@@ -47,4 +47,4 @@ Route::post('/module/{id}', 'AdminController@store');
 
 Route::post('/approveuser/{id}/{flag}', 'AdminController@approveUser');
 
-Route::post('/register', 'EmailController@send');
+//Route::post('/register', 'EmailController@send');

@@ -56,7 +56,7 @@
               </li>
               <li class="nav-item nav-item-toggable">
                 <a class="nav-link" href="http://www.vitalsware.com/case-studies" target="_blank">Case Studies</a>
-              </li> 
+              </li>
               <li class="nav-item nav-item-toggable">
                 <a class="nav-link" href="http://www.vitalsware.com/blog" target="_blank">Blog</a>
               </li>

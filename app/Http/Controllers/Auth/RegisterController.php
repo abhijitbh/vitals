@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Company;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -52,6 +53,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'is_company' => '',
         ]);
     }
 
@@ -62,12 +64,33 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {  
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'cid'=> $data['company'],
-        ]);
+    {
+        // Admin Registration
+        if(($data['is_company']== 0)){
+            $company = Company::create([
+                'name' => $data['company'],
+                'domain_name' => str_slug($data['company'], '-')
+            ]);
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+                'cid'=> $company->id,
+                'admin' => ($data['is_company']) ? 1 : 2 ,
+                'status' => 1,
+            ]);
+        }
+
+        // user Registration
+        if(($data['is_company']== 1)) {
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+                'cid'=> $data['is_company'],
+                'admin' => ($data['is_company']) ? 1 : 2 ,
+                'status' => 1,
+            ]);
+        }
     }
 }
