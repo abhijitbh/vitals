@@ -147,7 +147,7 @@
   }
   setTimeout(function() {
     $('#sign').fadeOut('fast');
-}, 1000); // <-- time in milliseconds
+}, 4000); // <-- time in milliseconds
 </script>
 </body>
 </html>
