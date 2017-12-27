@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
 use App\User;
 use Illuminate\Http\Request;
-use App\AuthenticateUser; 
+use App\AuthenticateUser;
 use Illuminate\Support\Facades\View;
 
 class UserController extends Controller
@@ -52,7 +52,7 @@ class UserController extends Controller
         return view::make('auth.passwords.company');
     }
 
-    
+
     // public function socialLogin(AuthenticateUser $authenticateUser, Request $request){
     //     $hasCode = $request->has('code');
     //     return $authenticateUser->execute($hasCode, $this);
@@ -66,9 +66,9 @@ class UserController extends Controller
      * @return \Illuminate\Routing\Redirector
      */
     public function userHasLoggedIn($user)
-    {        
+    {
         if(Auth::user()->admin == 2){
-            return redirect('/userproduct'); 
+            return redirect('/userproduct');
         }else{
             return redirect('/home');
         }

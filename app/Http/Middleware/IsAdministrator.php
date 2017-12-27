@@ -16,7 +16,7 @@ class IsAdministrator
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user() && $request->user()->id !=1 && $request->user()->status ==1) {
+        if ($request->user() && $request->user()->admin !=2  && $request->user()->status != 1) {
             return redirect('login');
         }
 

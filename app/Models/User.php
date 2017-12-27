@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -26,4 +27,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function getCompanyUsers($companyId){
+
+        return User::select('users.name','users.email', 'users.address','users.city','users.country','users.status','users.id','company.domain_name', 'company.name as company_name')
+                ->leftJoin('company', 'users.cid', '=', 'company.id')
+                ->where('admin', '!=', 2)
+                ->where('users.cid', '=', $companyId )->get();
+    }
+
+
 }

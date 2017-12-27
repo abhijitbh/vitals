@@ -34,7 +34,7 @@ class HomeController extends Controller
     {
 
         $activemodules = DB::table('modules')
-                  ->select('user_product.module_id','user_product.toggle', 
+                  ->select('user_product.module_id','user_product.toggle',
                           'modules.module_name')
                   ->leftJoin('user_product', 'user_product.module_id', '=', 'modules.id')
                   ->where('user_product.uid', Auth::user()->id)
@@ -53,7 +53,7 @@ class HomeController extends Controller
     public function dashboard()
     {
         $activemodules = DB::table('modules')
-                  ->select('user_product.module_id','user_product.toggle', 
+                  ->select('user_product.module_id','user_product.toggle',
                           'modules.module_name')
                   ->leftJoin('user_product', 'user_product.module_id', '=', 'modules.id')
                   ->where('user_product.uid', Auth::user()->id)

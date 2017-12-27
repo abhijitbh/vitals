@@ -101,18 +101,19 @@
         <h4 class="text-muted landing-heading"><b>HELLO, WELCOME TO VITALS</b></h4>
         <h1 class="intro-content">Our awesome solutions will make your life a lot easier.</h1>
         <h2 class="m-b-3">Great care takes <em>great software</em></h2>
-        @auth
+       <!--  @auth -->
 
-          @if( Auth::user()->admin == 2 )
+          <!-- @if( Auth::user()->admin == 2 )
             <a href="{{ url('/userproduct') }}">Admin Home</a>
           @else
             <a href="{{ url('/home') }}">User Home</a>
-          @endif
+          @endif -->
 
-        @else
+      <!--   @else -->
+
           <a class="btn btn-secondary-outline m-b-1" href="{{ route('login') }}" role="button"><span class="icon-lock"></span>Sign In</a>
           <a class="btn btn-secondary-outline m-b-1" href="{{ route('register') }}" role="button"><span class="icon-user"></span>Sign Up</a>
-        @endauth
+       <!--  @endauth -->
         <ul class="nav nav-inline social-share">
           <li class="nav-item"><a class="nav-link" href="https://twitter.com/vitalsware" target="_blank"><span class="icon-twitter"></span> 67+</a></li>
           <li class="nav-item"><a class="nav-link" href="https://www.facebook.com/vitalsware/" target="_blank"><span class="icon-facebook"></span> 279+</a></li>

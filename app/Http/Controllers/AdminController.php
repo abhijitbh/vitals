@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\ActivationMail;
 use App\User;
 use App\Modules;
+use App\Company;
 use App\UserProduct;
 use Session;
 
@@ -26,42 +27,34 @@ class AdminController extends Controller
 
     public function module(Request $request, $id)
     {
-        $userProduct = DB::table('modules')
-                    ->select('modules.id as module_id','user_product.toggle',
-                            'modules.module_name')
-                    ->leftJoin('user_product', 'user_product.module_id', '=', 'modules.id')
-                    ->where('user_product.uid', $id )->get();
+        $userProduct = Modules::getModulesByUser($id);
         return view('module',['userProduct' => $userProduct]);
     }
 
     public function showuser()
     {
-        $users = DB::table('users')
-                ->select('users.name','users.email', 'users.address','users.city','users.country','users.status','users.id','company.domain_name', 'company.name as company_name')
-                ->leftJoin('company', 'users.cid', '=', 'company.id')
-                ->where('email', '!=', ['admin@gmail.com'])->get();
-        return view('userproduct', ['users' => $users]);
+
+        $users = User::getCompanyUsers(Auth::user()->cid);
+
+        $company =  Company::where('id', '=', Auth::user()->cid)->first();
+        return view('userproduct', ['users' => $users, 'company' => $company]);
     }
 
     public function store(Request $request, $id)
     {
-    $data = collect(Input::get('toggle_type'));
+        UserProduct::where('uid', $id )->delete();
+        $data = collect(Input::get('toggle_type'));
 
-    UserProduct::where('uid', $id )->delete();
         foreach ($data as $key => $value) {
-      $userProduct = new UserProduct;
-      $userProduct->uid = $id;
-      $userProduct->toggle = $value;
-      $userProduct->module_id = $key;
-      $userProduct->save();
+            $userProduct = new UserProduct;
+            $userProduct->uid = $id;
+            $userProduct->toggle = $value;
+            $userProduct->module_id = $key;
+            $userProduct->save();
         }
-    $userProduct = DB::table('modules')
-                    ->select('modules.id as module_id','user_product.toggle',
-                            'modules.module_name')
-                    ->leftJoin('user_product', 'user_product.module_id', '=', 'modules.id')
-                    ->where('user_product.uid', $id )->get();
 
-    return view('module',['userProduct' => $userProduct])->with('status', 'Module updated!');
+        $userProduct = Modules::getModulesByUser($id);
+        return view('module',['userProduct' => $userProduct])->with('status', 'Module updated!');
     }
 
     public function approveUser(Request $request, $id, $flag)

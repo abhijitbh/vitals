@@ -68,12 +68,12 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         // Admin Registration
-        if(($data['is_company']== 0)){
+        if(($data['is_company'] == 0)){
             $company = Company::create([
                 'name' => $data['company'],
                 'domain_name' => str_slug($data['company'], '-')
             ]);
-            return User::create([
+            $user =  User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
@@ -81,6 +81,7 @@ class RegisterController extends Controller
                 'admin' => ($data['is_company']) ? 1 : 2 ,
                 'status' => 1,
             ]);
+
         }
 
         // user Registration
@@ -93,16 +94,15 @@ class RegisterController extends Controller
                 'admin' => ($data['is_company']) ? 1 : 2 ,
                 'status' => 1,
             ]);
-
-
-            foreach (DB::table('modules')->get() as $key => $module) {
-                $userProduct = new UserProduct;
-                $userProduct->uid = $user->id;
-                $userProduct->toggle = 0;
-                $userProduct->module_id = $module->id;
-                $userProduct->save();
-            }
-            return $user;
         }
+
+        foreach (DB::table('modules')->get() as $key => $module) {
+            $userProduct = new UserProduct;
+            $userProduct->uid = $user->id;
+            $userProduct->toggle = 0;
+            $userProduct->module_id = $module->id;
+            $userProduct->save();
+        }
+        return $user;
     }
 }

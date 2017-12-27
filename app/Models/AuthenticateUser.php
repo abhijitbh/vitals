@@ -7,7 +7,7 @@ use Illuminate\Contracts\Auth\Factory as Authenticator;
 use App\Repositories\UserRepository;
 use App\AuthenticateUserListener;
 
-class AuthenticateUser 
+class AuthenticateUser
 {
 
     /**
