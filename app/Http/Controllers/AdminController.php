@@ -33,9 +33,8 @@ class AdminController extends Controller
 
     public function showuser()
     {
-
+  
         $users = User::getCompanyUsers(Auth::user()->cid);
-
         $company =  Company::where('id', '=', Auth::user()->cid)->first();
         return view('userproduct', ['users' => $users, 'company' => $company]);
     }

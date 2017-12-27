@@ -20,8 +20,7 @@ class Modules extends Model
 
     public static function getModulesByUser($id){
 
-    	return DB::table('modules')
-                    ->select('modules.id as module_id','user_product.toggle',
+    	return Modules::select('modules.id as module_id','user_product.toggle',
                             'modules.module_name')
                     ->leftJoin('user_product', 'user_product.module_id', '=', 'modules.id')
                     ->where('user_product.uid', $id )->get();

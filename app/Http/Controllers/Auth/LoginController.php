@@ -32,7 +32,7 @@ class LoginController extends Controller
      * @var string
      */
     // protected $redirectTo = '/home';
-
+    
 
     /**
      * Handle an authentication attempt.
@@ -51,8 +51,6 @@ class LoginController extends Controller
             } else {
                 return response()->view('errors.nouser', compact('CompanyUsername'));
             }
-
-            //return $this->userHasLoggedIn( Auth::user() );
         } else {
             return redirect()->intended('/login')->with('status', 'Your account is deactivated please contact adminstrator');
         }

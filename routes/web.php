@@ -31,6 +31,9 @@ Route::domain('{company}.vitals.com')->group(function () {
 
 Auth::routes();
 
+Route::get('register', 'Auth\RegisterController@showRegistrationForm');
+Route::post('register', 'Auth\RegisterController@register')->name('register');;
+
 Route::get('/', function () {
     return view('welcome');
 });

@@ -105,4 +105,52 @@ class RegisterController extends Controller
         }
         return $user;
     }
+
+
+    /**
+    * Show the application registration form.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function showRegistrationForm(Request $request, $company = '')
+    {
+        $company_id = DB::table('company')->where('domain_name', $company)->first();
+        
+        return view('auth.register')->with('isCompany', empty($company)? 0 : 1 )
+                                    ->with('companyid', empty($company)? 0 : 1 )
+                                    ->with('status', 'Your Account created Successfuly');
+    }
+
+    /**
+    * Handle a registration request for the application.
+    *
+    * @param \Illuminate\Http\Request $request
+    * @return \Illuminate\Http\Response
+    */
+    public function register(Request $request)
+    {
+
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        // $this->guard()->login($user);
+
+        return $this->registered($request, $user) ?: redirect($this->redirectPath());
+    }
+
+
+    /**
+    * The user has been registered.
+    *
+    * @param \Illuminate\Http\Request $request
+    * @param mixed $user
+    * @return mixed
+    */
+    protected function registered(Request $request, $user)
+    {
+        return redirect()->intended('/')->with('status', 'Succesfully Registered!');
+        //return back()->with('success','Successfully Registered!');
+        //return redirect()->route('/');
+    }
 }
