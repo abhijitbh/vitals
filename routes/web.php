@@ -17,7 +17,7 @@ Route::domain('{company}.vitals.com')->group(function () {
 
 	Route::get('/', function () {
 	    return view('welcome');
-	});	
+	});
 
 	Route::get('/home', 'HomeController@index')->name('home');
 
@@ -41,6 +41,8 @@ Route::get('/', function () {
 Route::get('/module/{id}', 'AdminController@module')->name('module');
 
 Route::get('/userproduct', 'AdminController@showuser')->name('userproduct');
+
+Route::get('/add-assesment', 'AdminController@assesment')->name('assesment');
 
 Route::get('login/google', 'Auth\LoginController@socialLogin');
 

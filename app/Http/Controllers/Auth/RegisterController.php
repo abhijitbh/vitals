@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -115,9 +116,9 @@ class RegisterController extends Controller
     public function showRegistrationForm(Request $request, $company = '')
     {
         $company_id = DB::table('company')->where('domain_name', $company)->first();
-        
+
         return view('auth.register')->with('isCompany', empty($company)? 0 : 1 )
-                                    ->with('companyid', empty($company)? 0 : 1 )
+                                    ->with('companyid', empty($company_id->id) ? 0 : $company_id->id)
                                     ->with('status', 'Your Account created Successfuly');
     }
 
@@ -150,7 +151,5 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
         return redirect()->intended('/')->with('status', 'Succesfully Registered!');
-        //return back()->with('success','Successfully Registered!');
-        //return redirect()->route('/');
     }
 }

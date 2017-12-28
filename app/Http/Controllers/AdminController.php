@@ -31,12 +31,17 @@ class AdminController extends Controller
         return view('module',['userProduct' => $userProduct]);
     }
 
-    public function showuser()
+    public function showuser(Request $request)
     {
-  
         $users = User::getCompanyUsers(Auth::user()->cid);
         $company =  Company::where('id', '=', Auth::user()->cid)->first();
         return view('userproduct', ['users' => $users, 'company' => $company]);
+    }
+
+    public function assesment()
+    {
+       $company =  Company::where('id', '=', Auth::user()->cid)->first();
+       return view('assesment',['company' => $company]);
     }
 
     public function store(Request $request, $id)

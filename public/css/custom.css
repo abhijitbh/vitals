@@ -94,7 +94,7 @@
 
 
 	/***** MODAL PROPERTIES *****/
-	.modal-content {
+/*	.modal-content {
 		-webkit-box-shadow: none;
 		box-shadow: none;
 		background:transparent;
@@ -110,11 +110,11 @@
 		display: none;
 		font-size: 80px;
 		margin:-20px 0 0 0;
-	}
+	}*/
 	/***** MEDIA QUERIES *****/
-	@media only screen and (max-width: 641px) {
+	/*@media only screen and (max-width: 641px) {
 		/***** MODAL PROPERTIES *****/
-		.modal-body {
+		/*.modal-body {
 			height:100px;
 			padding:0;
 			margin: 0;
@@ -131,7 +131,7 @@
 		.close {
 			margin:-12px 0 0 0;
 		}
-	}
+	}*/
 
 
 	@media only screen and (min-width: 768px) {
@@ -187,6 +187,13 @@
     	padding: 8px 15px;
     	width:100px;
     }
+
+    .assesment {
+    	margin-left: 740px;
+    	margin-top: 20px;
+    	padding: 5px 10px;
+    }
+
     body {
   overflow-x: hidden;
 }

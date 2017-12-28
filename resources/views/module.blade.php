@@ -51,12 +51,18 @@
                     </div>
 
                     <ul class="nav">
-                    <li>
+                    <li class="active">
                         <a href="{{ url('/userproduct') }}">
                         <i class="pe-7s-user"></i>
                         <p>UserProduct</p>
                         </a>
-                        </li>
+                    </li>
+                        <li>
+                        <a href="{{ url('/add-assesment') }}">
+                        <i class="pe-7s-user"></i>
+                        <p>Add-Assesment</p>
+                        </a>
+                    </li>
                     </ul>
                     </div>
                 </div>
@@ -140,7 +146,6 @@
         </p>
     </div>
 </footer>
-
 </div>
 </div>
 
