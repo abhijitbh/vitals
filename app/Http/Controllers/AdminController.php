@@ -13,6 +13,10 @@ use App\User;
 use App\Modules;
 use App\Company;
 use App\UserProduct;
+use App\Assessment;
+use App\Header;
+use App\Models\Question;
+use App\Models\QuestionsOption;
 use Session;
 
 class AdminController extends Controller
@@ -38,10 +42,52 @@ class AdminController extends Controller
         return view('userproduct', ['users' => $users, 'company' => $company]);
     }
 
-    public function assesment()
+    public function displayAssesment()
     {
        $company =  Company::where('id', '=', Auth::user()->cid)->first();
-       return view('assesment',['company' => $company]);
+       $assesment = Assessment::get();
+       return view('assesment',['company' => $company , 'assesment' => $assesment]);
+    }
+
+    public function assesment($id)
+    {
+       $company =  Company::where('id', '=', Auth::user()->cid)->first();
+       $assesment = Assessment::findOrFail($id)->get();
+       return view('assesment',['company' => $company , 'assesment' => $assesment]);
+    }
+
+    public function saveAssesment(Request $request)
+    {
+        $as = new Assessment;
+        $as->name = Input::get('assetname');
+        $as->location = Input::get('list');
+        $as->version_number = Input::get('version');
+        $as->enchanced_comments = Input::get('comment');
+        $as->save();
+    }
+
+    public function header()
+    {
+       $company =  Company::where('id', '=', Auth::user()->cid)->first();
+       $header = Header::get();
+       //$quetions = Question::get();
+       return view('header',['company' => $company,'header'=> $header]);
+    }
+
+    public function saveHeader(Request $request)
+    {
+        $head = new Header;
+        $head->name=Input::get('header');
+        $head->aid=1;
+        $head->save();
+    }
+
+    public function headers(Request $request, $id)
+    {
+        $company =  Company::where('id', '=', Auth::user()->cid)->first();
+        $data = Header::where('id', '=', $id)->first();
+        $header = Header::get();
+        return view('header',['heads' => $data, 'header'=> $header, 'company' => $company]);
     }
 
     public function store(Request $request, $id)

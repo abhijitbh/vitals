@@ -42,7 +42,31 @@ Route::get('/module/{id}', 'AdminController@module')->name('module');
 
 Route::get('/userproduct', 'AdminController@showuser')->name('userproduct');
 
-Route::get('/add-assesment', 'AdminController@assesment')->name('assesment');
+Route::get('/assesment', 'AdminController@displayAssesment')->name('assesment');
+
+// Route::get('/edit/assesment/{id}', 'AdminController@assesment');
+
+Route::post('/assesment', 'AdminController@saveAssesment');
+
+Route::get('/add-header', 'AdminController@header')->name('header');
+
+Route::post('/header', 'AdminController@saveHeader');
+
+Route::get('/headers/{id}', 'AdminController@headers');
+
+Route::post('/question/{id}', 'QuestionController@store');
+
+Route::get('/edit/assesment/{id}', 'QuestionController@index');
+
+Route::get('/question/{id}', 'QuestionController@destroy');
+
+Route::get('/question-edit/{id}', 'QuestionController@editQuestionid');
+
+
+/*Route::get('/question/{id}', 'QuestionController@update');*/
+
+
+
 
 Route::get('login/google', 'Auth\LoginController@socialLogin');
 

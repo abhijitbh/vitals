@@ -1,3 +1,4 @@
+
 .landing-heading{
 	color: rgba(255, 255, 255, 0.6);
 	font-family: "raleway-heavy", sans-serif;
@@ -139,7 +140,7 @@
 		.close {
 			font-size: 30px;
 			color: white;
-			margin:30px -43px -20px 100px;
+			margin:30px -2px -20px 100px;
 		}
 	}
 
@@ -193,7 +194,6 @@
     	margin-top: 20px;
     	padding: 5px 10px;
     }
-
     body {
   overflow-x: hidden;
 }

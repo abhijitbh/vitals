@@ -23,7 +23,7 @@
                 </li>
 
                 <li class="">
-                    <a href="{{ url('/add-assesment') }}">
+                    <a href="{{ url('/assesment') }}">
                     <i class="pe-7s-user"></i>
                     <p>Add-Assesment</p>
                     </a>

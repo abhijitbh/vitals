@@ -19,11 +19,12 @@
                 </li>
 
                 <li class="active">
-                    <a href="{{ url('/add-assesment') }}">
+                    <a href="{{ url('/assesment') }}">
                     <i class="pe-7s-user"></i>
                     <p>Add-Assesment</p>
                     </a>
                 </li>
+
             </ul>
         </div>
     </div>
@@ -32,17 +33,49 @@
 @include('layouts.admin_center')
 
 
-<!-- <div class="content">
-    <div class="build-wrap"></div>
-    <div class="render-wrap"></div>
-    <button id="edit-form">Edit Form</button>
-</div> -->
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Add Assessment</h4>
+                <button type="button" class="btn btn-primary btn-lg assesment" data-toggle="modal" data-target="#myModal">Create Assessment
+                </button>
+            </div>
+        <div class="content table-responsive table-full-width">
+        <table class="table table-hover table-striped">
+        <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Version Number</th>
+        <th>Enhanced-Comments</th>
+       </thead>
+      <tbody>
+    <tr>
+    @foreach($assesment as $ass)
+      <td>{{ $ass->id }}</td>
+      <td>{{ $ass->name }}</td>
+      <td>{{ $ass->location }}</td>
+      <td>{{ $ass->version_number }}</td>
+      <td>{{ $ass->enchanced_comments }} </td>
+      <td><a href="{{ URL::to('/edit/assesment/'.$ass->id) }}">Edit Assessment</a>
+      </td>
+    </tr>
+    @endforeach
+    </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
 
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg assesment" data-toggle="modal" data-target="#myModal">
- Create Assessment
-</button>
+
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false" style="position: absolute;">
@@ -53,13 +86,29 @@
         <h4 class="modal-title" id="myModalLabel">Create Assessment</h4>
       </div>
     <div class="modal-body">
-        <h5>Basic Datails</h5>
+        <h5>Basic Details</h5>
         <form method="POST" id="Save">
             {{ csrf_field() }}
 
-        <div class="checkbox">
-            <label><input type="checkbox" value=" " checked>Used For Billing</label>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" name="assetname" value="" class="form-control" placeholder="Asset Name">
+                    @if ($errors->has('assetname'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('assetname') }}</strong>
+                    </span>
+                    @endif
+                </div>
+            </div>
         </div>
+
+
+        <div class="checkbox">
+            <label><input type="checkbox" value=" " checked="true">Used For Billing</label>
+        </div>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
@@ -140,17 +189,15 @@
     $('body').on('click', '#submitForm', function(){
         var registerForm = $("#Save");
         var formData = registerForm.serialize();
-        console.log(formData);
         $( '#name-error' ).html( "" );
         $( '#email-error' ).html( "" );
         $( '#password-error' ).html( "" );
-
+         $('#myModal').modal('toggle');
         $.ajax({
-            url:'/add-assesment',
+            url:'/assesment',
             type:'POST',
             data:formData,
             success:function(data) {
-                console.log(data);
                 if(data.errors) {
                     if(data.errors.name){
                         $( '#name-error' ).html( data.errors.name[0] );
@@ -166,12 +213,15 @@
                 if(data.success) {
                     $('#success-msg').removeClass('hide');
                     setInterval(function(){
-                        $('#SignUp').modal('hide');
+                        $('#Save').modal('hide');
                         $('#success-msg').addClass('hide');
                     }, 3000);
                 }
+
+                location.reload();
             },
         });
     });
+
 </script>
 </html>

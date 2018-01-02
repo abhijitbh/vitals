@@ -116,6 +116,8 @@
 
 {{ csrf_field() }}
 
+
+
  @foreach($userProduct as $module)
     <div class="row product-row">
         <div class="col-md-8"> <p class="product-text">{{$module->module_name}}</p    ></div>

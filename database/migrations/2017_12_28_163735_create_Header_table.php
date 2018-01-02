@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserProductTable extends Migration
+class CreateHeaderTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateUserProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_product', function (Blueprint $table) {
+        Schema::create('Header', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('uid');
-            $table->integer('module_id');
-            $table->tinyInteger('toggle')->nullable();
+            $table->string('name');
+            $table->integer('aid')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateUserProductTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_product');
+        Schema::dropIfExists('Header');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserProductTable extends Migration
+class CreateQuestinsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateUserProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_product', function (Blueprint $table) {
+        Schema::create('Questions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('uid');
-            $table->integer('module_id');
-            $table->tinyInteger('toggle')->nullable();
+            $table->string('topic')->nullable();
+            $table->string('question_text')->nullable();
+            $table->string('question_data')->nullable();
+            $table->string('answer_explanation')->nullable();
+            $table->integer('hid')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateUserProductTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_product');
+        Schema::dropIfExists('Questins');
     }
 }
