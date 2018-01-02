@@ -50,7 +50,7 @@ Route::post('/assesment', 'AdminController@saveAssesment');
 
 Route::get('/add-header', 'AdminController@header')->name('header');
 
-Route::post('/header', 'AdminController@saveHeader');
+Route::post('/header/{hid}', 'AdminController@saveHeader');
 
 Route::get('/headers/{id}', 'AdminController@headers');
 

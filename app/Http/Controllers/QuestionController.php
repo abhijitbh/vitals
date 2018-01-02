@@ -33,12 +33,18 @@ class QuestionController extends Controller
     public function index($id)
     {
             $quetions = DB::table('Questions')
-                      ->select('*')
+                      ->select('Questions.*')
                       ->leftJoin('Header', 'Questions.hid', '=', 'Header.id')
                       ->leftJoin('Assessment', 'Assessment.id', '=', 'Header.aid')
                       ->where('Assessment.id', $id)->get();
+
         $company =  Company::where('id', '=', Auth::user()->cid)->first();
-        $header = Header::get();
+
+        $header = DB::table('Header')
+                      ->select('Header.*')
+                      ->leftJoin('Assessment', 'Assessment.id', '=', 'Header.aid')
+                      ->where('Assessment.id', $id)->get();
+
         return view('header',['quetions' => $quetions,'header'=> $header,'company' => $company, 'assesmentId'=>$id]);
     }
 
@@ -46,14 +52,18 @@ class QuestionController extends Controller
     {
 
      $quetions = DB::table('Questions')
-                      ->select('*')
+                      ->select('Questions.*')
                       ->leftJoin('Header', 'Questions.hid', '=', 'Header.id')
                       ->leftJoin('Assessment', 'Assessment.id', '=', 'Header.aid')
                       ->where('Assessment.id', $id)
                       ->where('Questions.hid', $hid)->get();
         // $quetions = Question::where('hid', $hid)->get();
         $company =  Company::where('id', '=', Auth::user()->cid)->first();
-        $header = Header::get();
+        $header = DB::table('Header')
+                      ->select('Header.*')
+                      ->leftJoin('Assessment', 'Assessment.id', '=', 'Header.aid')
+                      ->where('Assessment.id', $id)->get();
+
         return view('header',['quetions' => $quetions,'header'=> $header,'company' => $company, 'assesmentId'=>$id]);
     }
 

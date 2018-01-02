@@ -74,11 +74,11 @@ class AdminController extends Controller
        return view('header',['company' => $company,'header'=> $header]);
     }
 
-    public function saveHeader(Request $request)
+    public function saveHeader(Request $request, $aid)
     {
         $head = new Header;
         $head->name=Input::get('header');
-        $head->aid=1;
+        $head->aid=$aid;
         $head->save();
     }
 

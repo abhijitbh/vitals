@@ -474,11 +474,12 @@
     $('body').on('click', '#submitForm', function(){
         var registerForm = $("#Save");
         var formData = registerForm.serialize();
+        var assementId = <?php echo $assesmentId ?>;
         console.log(formData);
         $( '#name-error' ).html( "" );
          $('#myModal').modal('toggle');
         $.ajax({
-            url:'/header',
+            url:'/header/' + assementId,
             type:'POST',
             data:formData,
             success:function(data) {
