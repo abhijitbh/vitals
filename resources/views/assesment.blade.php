@@ -114,10 +114,10 @@
                 <div class="form-group">
                     <label for="list">Assessment Location</label>
                     <select class="form-control" id="list" name="list">
-                    <option>Baner</option>
-                    <option>Warje</option>
-                    <option>Kothrud</option>
-                    <option>Sinhgad</option>
+                    <option>Top</option>
+                    <option>Bottom</option>
+                    <option>Left</option>
+                    <option>Right</option>
                     </select>
                 </div>
             </div>

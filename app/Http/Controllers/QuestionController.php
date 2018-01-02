@@ -42,8 +42,8 @@ class QuestionController extends Controller
     {
         echo "hi";
         print_r($request);
-         $quetions = Question::where('id', $id)->get();
-         print_r($quetions);
+        $quetions = Question::where('id', $id)->get();
+        print_r($quetions);
 
     }
 

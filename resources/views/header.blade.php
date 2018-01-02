@@ -533,14 +533,15 @@ var id = url.substring(url.lastIndexOf('/') + 1);
 </script>
 <script type="text/javascript">
 $(document).on('click', '.edit-modal', function() {
+    //var url = 'question/';
     var id=$(this).data('id');
-    $.ajax({
-            url: '/question-edit/'+id,
+    /*$.ajax({
+            url: url+id,
             method: 'GET',
             success:function(data) {
             console.log(data);
         }
-    });
+    });*/*/
     $('#edit_question').modal('show');
     });
 </script>
