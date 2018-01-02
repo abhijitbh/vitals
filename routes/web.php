@@ -54,7 +54,7 @@ Route::post('/header', 'AdminController@saveHeader');
 
 Route::get('/headers/{id}', 'AdminController@headers');
 
-Route::post('/question/{id}', 'QuestionController@store');
+Route::post('/question/{assesmentId}/{id}', 'QuestionController@store');
 
 Route::get('/edit/assesment/{id}', 'QuestionController@index');
 

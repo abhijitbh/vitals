@@ -32,7 +32,11 @@ class QuestionController extends Controller
 
     public function index($id)
     {
-        $quetions = Question::get();
+            $quetions = DB::table('Questions')
+                      ->select('*')
+                      ->leftJoin('Header', 'Questions.hid', '=', 'Header.id')
+                      ->leftJoin('Assessment', 'Assessment.id', '=', 'Header.aid')
+                      ->where('Assessment.id', $id)->get();
         $company =  Company::where('id', '=', Auth::user()->cid)->first();
         $header = Header::get();
         return view('header',['quetions' => $quetions,'header'=> $header,'company' => $company, 'assesmentId'=>$id]);
@@ -40,7 +44,14 @@ class QuestionController extends Controller
 
     public function editHeader($id, $hid)
     {
-        $quetions = Question::where('hid', $hid)->get();
+
+     $quetions = DB::table('Questions')
+                      ->select('*')
+                      ->leftJoin('Header', 'Questions.hid', '=', 'Header.id')
+                      ->leftJoin('Assessment', 'Assessment.id', '=', 'Header.aid')
+                      ->where('Assessment.id', $id)
+                      ->where('Questions.hid', $hid)->get();
+        // $quetions = Question::where('hid', $hid)->get();
         $company =  Company::where('id', '=', Auth::user()->cid)->first();
         $header = Header::get();
         return view('header',['quetions' => $quetions,'header'=> $header,'company' => $company, 'assesmentId'=>$id]);
@@ -69,7 +80,7 @@ class QuestionController extends Controller
     }*/
 
 
-    public function store(Request $request, $id)
+    public function store(Request $request, $assesmentId, $id)
     {
 
         $data = input::all();

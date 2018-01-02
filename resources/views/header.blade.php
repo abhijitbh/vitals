@@ -504,13 +504,14 @@
 <script type="text/javascript">
 var url = window.location.pathname;
 var id = url.substring(url.lastIndexOf('/') + 1);
+var assId = <?php echo $assesmentId ?>;
     $('body').on('click', '#submitQuestion', function(){
         var registerForm = $("#Save_Question");
         var formData = registerForm.serialize();
         $( '#name-error' ).html( "" );
         $('#question').modal('toggle');
         $.ajax({
-            url:'/question/'+id,
+            url:'/question/'+assId+'/'+id,
             type:'POST',
             data:formData,
             success:function(data) {
