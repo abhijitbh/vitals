@@ -23,9 +23,10 @@
             @foreach($header as $head)
             <li>
                 <i style="width: 80px;line-height: 40px;" class="pe-7s-graph"></i>
-                <a href="{{ URL::to('headers/'.$head->id) }}">{{ $head->name }}
+                <a href="{{ URL::to('/edit/assesment/'.$assesmentId.'/header/'.$head->id) }}">{{ $head->name }}
                 </a>
-            </li>
+
+              </li>
             @endforeach
 
             </ul>
@@ -533,17 +534,21 @@ var id = url.substring(url.lastIndexOf('/') + 1);
 </script>
 <script type="text/javascript">
 $(document).on('click', '.edit-modal', function() {
-    //var url = 'question/';
     var id=$(this).data('id');
-    /*$.ajax({
-            url: url+id,
-            method: 'GET',
-            success:function(data) {
-            console.log(data);
-        }
-    });*/*/
-    $('#edit_question').modal('show');
+    url = "/edit-question/"+id;
+          $.ajax({
+            url: url,
+            method: "get"
+  }).done(function(response) {
+    console.log(response);
+    //Setting input values
+    /*$("input[name='editID']").val(id);
+    $("input[name='company']").val(response.company);
+    $("input[name='to']").val(response.to);
+    $("input[name='from']").val(response.from);*/
     });
+    $('#edit_question').modal('show');
+});
 </script>
 </html>
 

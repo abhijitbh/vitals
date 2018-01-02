@@ -58,9 +58,11 @@ Route::post('/question/{id}', 'QuestionController@store');
 
 Route::get('/edit/assesment/{id}', 'QuestionController@index');
 
+Route::get('/edit/assesment/{id}/header/{hid}', 'QuestionController@editHeader');
+
 Route::get('/question/{id}', 'QuestionController@destroy');
 
-Route::get('/question-edit/{id}', 'QuestionController@editQuestionid');
+Route::get('/edit-question/{id}', 'QuestionController@editQuestionid');
 
 
 /*Route::get('/question/{id}', 'QuestionController@update');*/

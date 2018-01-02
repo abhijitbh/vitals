@@ -32,20 +32,28 @@ class QuestionController extends Controller
 
     public function index($id)
     {
-        $quetions = Question::where('hid', $id)->get();
+        $quetions = Question::get();
         $company =  Company::where('id', '=', Auth::user()->cid)->first();
         $header = Header::get();
-        return view('header',['quetions' => $quetions,'header'=> $header,'company' => $company]);
+        return view('header',['quetions' => $quetions,'header'=> $header,'company' => $company, 'assesmentId'=>$id]);
     }
 
-    public function editQuestionid(Request $request,$id)
+    public function editHeader($id, $hid)
     {
-        echo "hi";
-        print_r($request);
-        $quetions = Question::where('id', $id)->get();
-        print_r($quetions);
-
+        $quetions = Question::where('hid', $hid)->get();
+        $company =  Company::where('id', '=', Auth::user()->cid)->first();
+        $header = Header::get();
+        return view('header',['quetions' => $quetions,'header'=> $header,'company' => $company, 'assesmentId'=>$id]);
     }
+
+    // public function editQuestionid(Request $request,$id)
+    // {
+    //     echo "hi";
+    //     echo $id;
+    //     $quetions = Question::where('id', $id)->get();
+    //     print_r($quetions);
+
+    // }
 
     /*public function show($id)
     {
