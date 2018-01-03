@@ -10,10 +10,11 @@
                 </a>
             </div>
 
-            <ul class="nav">
+            <ul class="nav side-nav" style="cursor: pointer;">
 
             <li>
-                <a class="btn btn-info" href="{{  url('/assesment') }}">Back</a>
+            <i style="width: 80px;line-height: 40px;" class="pe-7s-angle-left-circle"></i>
+                <a href="{{  url('/assesment') }}" style="border: none;">Back</a>
             </li>
 
             <li>
@@ -22,11 +23,11 @@
 
             @foreach($header as $head)
             <li>
-                <i style="width: 80px;line-height: 40px;" class="pe-7s-graph"></i>
-                <a href="{{ URL::to('/edit/assesment/'.$assesmentId.'/header/'.$head->id) }}">{{ $head->name }}
+                <i style="width: 80px;line-height: 40px;" class="pe-7s-folder"></i>
+                <a href="{{ URL::to('/edit/assesment/'.$assesmentId.'/header/'.$head->id) }}" data-id="{{ $head->id }}">{{ $head->name }}
                 </a>
 
-              </li>
+            </li>
             @endforeach
 
             </ul>
@@ -84,9 +85,12 @@
         </div>
     </div>
     <!-- Modal Button -->
+    @if (isset($header) && count($header) > 0)
     <div class="row">
-        <div class="col-sm-offset-8 col-sm-4"><a data-toggle="modal" data-target="#question" class="btn btn-primary">Add Question</a></div>
+        <div class="col-sm-offset-8 col-sm-4"><a data-toggle="modal" data-target="#question" class="btn btn-primary" id="question-button">Add Question</a>
+        </div>
     </div>
+     @endif
 </div>
 
 
@@ -471,11 +475,25 @@
 <script src="{{ asset('js/demo.js') }}"></script>
 
 <script type="text/javascript">
-    $('body').on('click', '#submitForm', function(){
+
+var url = window.location.pathname;
+var id = url.substring(url.lastIndexOf('/') + 1);
+var assId = <?php echo $assesmentId ?>;
+    $('.side-nav li a').filter(function(){
+          return $(this).data('id') == id;
+    }).parent().addClass('active');
+
+    if($('.side-nav').find('li').hasClass('active')){
+        $('#question-button').show();
+    }else{
+        $('#question-button').hide();
+    }
+
+    $('body').on('click', '#submitForm', function(event){
+       event.preventDefault();
         var registerForm = $("#Save");
         var formData = registerForm.serialize();
         var assementId = <?php echo $assesmentId ?>;
-        console.log(formData);
         $( '#name-error' ).html( "" );
          $('#myModal').modal('toggle');
         $.ajax({
@@ -483,12 +501,10 @@
             type:'POST',
             data:formData,
             success:function(data) {
-                console.log(data);
                 if(data.errors) {
                     if(data.errors.name){
                         $( '#name-error' ).html( data.errors.name[0] );
                     }
-
                 }
                 if(data.success) {
                     $('#success-msg').removeClass('hide');
@@ -497,16 +513,14 @@
                         $('#success-msg').addClass('hide');
                     }, 3000);
                 }
+                window.location.replace(data);
             },
         });
-        location.reload();
     });
-</script>
-<script type="text/javascript">
-var url = window.location.pathname;
-var id = url.substring(url.lastIndexOf('/') + 1);
-var assId = <?php echo $assesmentId ?>;
-    $('body').on('click', '#submitQuestion', function(){
+
+
+    $('body').on('click', '#submitQuestion', function(event){
+        event.preventDefault();
         var registerForm = $("#Save_Question");
         var formData = registerForm.serialize();
         $( '#name-error' ).html( "" );
@@ -533,9 +547,10 @@ var assId = <?php echo $assesmentId ?>;
         });
         location.reload();
     });
-</script>
-<script type="text/javascript">
-$(document).on('click', '.edit-modal', function() {
+
+
+$(document).on('click', '.edit-modal', function(event) {
+       event.preventDefault();
     var id=$(this).data('id');
     url = "/edit-question/"+id;
           $.ajax({

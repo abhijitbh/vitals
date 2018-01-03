@@ -56,9 +56,9 @@ Route::get('/headers/{id}', 'AdminController@headers');
 
 Route::post('/question/{assesmentId}/{id}', 'QuestionController@store');
 
-Route::get('/edit/assesment/{id}', 'QuestionController@index');
+Route::get('/edit/assesment/{id}', 'QuestionController@index')->name('editAssesment');
 
-Route::get('/edit/assesment/{id}/header/{hid}', 'QuestionController@editHeader');
+Route::get('/edit/assesment/{id}/header/{hid}', 'QuestionController@editHeader')->name('displayHeader');
 
 Route::get('/question/{id}', 'QuestionController@destroy');
 

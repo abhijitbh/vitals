@@ -18,6 +18,7 @@ use App\Header;
 use App\Models\Question;
 use App\Models\QuestionsOption;
 use Session;
+use Illuminate\Http\RedirectResponse;
 
 class AdminController extends Controller
 {
@@ -64,6 +65,8 @@ class AdminController extends Controller
         $as->version_number = Input::get('version');
         $as->enchanced_comments = Input::get('comment');
         $as->save();
+
+        return route('editAssesment', ['id' => $as->id]);
     }
 
     public function header()
@@ -80,6 +83,7 @@ class AdminController extends Controller
         $head->name=Input::get('header');
         $head->aid=$aid;
         $head->save();
+        return route('displayHeader', ['id' => $aid, 'hid' => $head->id]);
     }
 
     public function headers(Request $request, $id)

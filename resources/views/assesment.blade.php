@@ -218,7 +218,7 @@
                     }, 3000);
                 }
 
-                location.reload();
+              window.location.replace(data);
             },
         });
     });
