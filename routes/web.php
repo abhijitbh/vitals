@@ -65,6 +65,8 @@ Route::get('/question/{id}', 'QuestionController@destroy');
 Route::get('/edit-question/{id}', 'QuestionController@editQuestionid');
 
 
+Route::get('/assesment/preview/{id}', 'QuestionController@renderPreview');
+
 /*Route::get('/question/{id}', 'QuestionController@update');*/
 
 

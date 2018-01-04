@@ -8,7 +8,7 @@
 
             <div class="sidebar-wrapper">
                 <div class="logo">
-                    <a href="{{ url('/home') }}" class="simple-text">
+                    <a href="{{ url('/userproduct') }}" class="simple-text">
                        <span><img src="{{ asset('/img/vitals.png') }}"></img></span>
                     </a>
                 </div>

@@ -5,29 +5,29 @@
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="{{ url('/home') }}" class="simple-text">
+                <a href="{{ url('/assesment') }}" class="simple-text">
                    <span><img src="{{ asset('/img/vitals.png') }}"></img></span>
-                </a>
-            </div>
+               </a>
+           </div>
 
-            <ul class="nav">
-                <li class="">
-                    <a href="{{ url('/userproduct') }}">
+           <ul class="nav">
+            <li class="">
+                <a href="{{ url('/userproduct') }}">
                     <i class="pe-7s-user"></i>
                     <p>UserProduct</p>
-                    </a>
-                </li>
+                </a>
+            </li>
 
-                <li class="active">
-                    <a href="{{ url('/assesment') }}">
+            <li class="active">
+                <a href="{{ url('/assesment') }}">
                     <i class="pe-7s-user"></i>
                     <p>Add-Assesment</p>
-                    </a>
-                </li>
+                </a>
+            </li>
 
-            </ul>
-        </div>
+        </ul>
     </div>
+</div>
 
 
 @include('layouts.admin_center')
@@ -42,32 +42,32 @@
                 <button type="button" class="btn btn-primary btn-lg assesment" data-toggle="modal" data-target="#myModal">Create Assessment
                 </button>
             </div>
-        <div class="content table-responsive table-full-width">
-        <table class="table table-hover table-striped">
-        <thead>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Location</th>
-        <th>Version Number</th>
-        <th>Enhanced-Comments</th>
-       </thead>
-      <tbody>
-    <tr>
-    @foreach($assesment as $ass)
-      <td>{{ $ass->id }}</td>
-      <td>{{ $ass->name }}</td>
-      <td>{{ $ass->location }}</td>
-      <td>{{ $ass->version_number }}</td>
-      <td>{{ $ass->enchanced_comments }} </td>
-      <td><a href="{{ URL::to('/edit/assesment/'.$ass->id) }}">Edit Assessment</a>
-      </td>
-    </tr>
-    @endforeach
-    </tbody>
-</table>
-</div>
-</div>
-</div>
+            <div class="content table-responsive table-full-width">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Version Number</th>
+                        <th>Enhanced-Comments</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            @foreach($assesment as $ass)
+                            <td>{{ $ass->id }}</td>
+                            <td>{{ $ass->name }}</td>
+                            <td>{{ $ass->location }}</td>
+                            <td>{{ $ass->version_number }}</td>
+                            <td>{{ $ass->enchanced_comments }} </td>
+                            <td><a href="{{ URL::to('/edit/assesment/'.$ass->id) }}">Edit Assessment</a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 </div>
 
@@ -84,76 +84,76 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Create Assessment</h4>
-      </div>
+    </div>
     <div class="modal-body">
         <h5>Basic Details</h5>
         <form method="POST" id="Save">
             {{ csrf_field() }}
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" name="assetname" value="" class="form-control" placeholder="Asset Name">
-                    @if ($errors->has('assetname'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('assetname') }}</strong>
-                    </span>
-                    @endif
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" name="assetname" value="" class="form-control" placeholder="Asset Name">
+                        @if ($errors->has('assetname'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('assetname') }}</strong>
+                        </span>
+                        @endif
+                    </div>
                 </div>
             </div>
-        </div>
 
 
-        <div class="checkbox">
-            <label><input type="checkbox" value=" " checked="true">Used For Billing</label>
-        </div>
+            <div class="checkbox">
+                <label><input type="checkbox" value=" " checked="true">Used For Billing</label>
+            </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label for="list">Assessment Location</label>
-                    <select class="form-control" id="list" name="list">
-                    <option>Top</option>
-                    <option>Bottom</option>
-                    <option>Left</option>
-                    <option>Right</option>
-                    </select>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="list">Assessment Location</label>
+                        <select class="form-control" id="list" name="list">
+                            <option>Top</option>
+                            <option>Bottom</option>
+                            <option>Left</option>
+                            <option>Right</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Version Number</label>
-                    <input type="text" name="version" value="" class="form-control" placeholder="Version Number">
-                    @if ($errors->has('version'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('version') }}</strong>
-                    </span>
-                    @endif
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Version Number</label>
+                        <input type="text" name="version" value="" class="form-control" placeholder="Version Number">
+                        @if ($errors->has('version'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('version') }}</strong>
+                        </span>
+                        @endif
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label for="comment">Enhanced Comment</label>
-                    <textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="comment">Enhanced Comment</label>
+                        <textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
+                    </div>
                 </div>
             </div>
-        </div>
 
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" id="submitForm" class="btn btn-primary">Save changes</button>
-      </div>
-    </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="submitForm" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
     </div>
-  </div>
+</div>
 </div>
 
 @include('layouts.admin_footer')
@@ -192,7 +192,7 @@
         $( '#name-error' ).html( "" );
         $( '#email-error' ).html( "" );
         $( '#password-error' ).html( "" );
-         $('#myModal').modal('toggle');
+        $('#myModal').modal('toggle');
         $.ajax({
             url:'/assesment',
             type:'POST',
@@ -218,7 +218,7 @@
                     }, 3000);
                 }
 
-              window.location.replace(data);
+                window.location.replace(data);
             },
         });
     });

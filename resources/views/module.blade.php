@@ -45,7 +45,7 @@
 
                 <div class="sidebar-wrapper">
                     <div class="logo">
-                        <a href="" class="simple-text">
+                        <a href="\userproduct" class="simple-text">
                         <span><img src="{{ asset('/img/vitals.png') }}"></img></span>
                         </a>
                     </div>
@@ -58,7 +58,7 @@
                         </a>
                     </li>
                         <li>
-                        <a href="{{ url('/add-assesment') }}">
+                        <a href="{{ url('/assesment') }}">
                         <i class="pe-7s-user"></i>
                         <p>Add-Assesment</p>
                         </a>

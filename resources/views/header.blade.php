@@ -5,34 +5,34 @@
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="{{ url('/home') }}" class="simple-text">
+                <a href="{{ url('/assesment') }}" class="simple-text">
                    <span><img src="{{ asset('/img/vitals.png') }}"></img></span>
-                </a>
-            </div>
+               </a>
+           </div>
 
-            <ul class="nav side-nav" style="cursor: pointer;">
+           <ul class="nav side-nav" style="cursor: pointer;">
 
             <li>
-            <i style="width: 80px;line-height: 40px;" class="pe-7s-angle-left-circle"></i>
+                <i style="width: 80px;line-height: 40px;" class="pe-7s-angle-left-circle"></i>
                 <a href="{{  url('/assesment') }}" style="border: none;">Back</a>
             </li>
 
             <li>
                <a data-toggle="modal" data-target="#myModal">Create Header</a>
-            </li>
+           </li>
 
-            @foreach($header as $head)
-            <li>
-                <i style="width: 80px;line-height: 40px;" class="pe-7s-folder"></i>
-                <a href="{{ URL::to('/edit/assesment/'.$assesmentId.'/header/'.$head->id) }}" data-id="{{ $head->id }}">{{ $head->name }}
-                </a>
+           @foreach($header as $head)
+           <li>
+            <i style="width: 80px;line-height: 40px;" class="pe-7s-folder"></i>
+            <a href="{{ URL::to('/edit/assesment/'.$assesmentId.'/header/'.$head->id) }}" data-id="{{ $head->id }}">{{ $head->name }}
+            </a>
 
-            </li>
-            @endforeach
+        </li>
+        @endforeach
 
-            </ul>
-        </div>
-    </div>
+    </ul>
+</div>
+</div>
 
 
 
@@ -40,88 +40,91 @@
 
 <div class="container">
    <h5>Test Assesment</h5>
-    <div class="row">
-        <div class="col-sm-4">
-            <div class="checkbox">
-                <label><input type="checkbox" checked>Used For Billing</label>
-            </div>
-            <div class="checkbox">
-                <label><input type="checkbox" checked>Show Ponits</label>
-            </div>
-            <div class="checkbox">
-                <label><input type="checkbox" checked>Archieves</label>
-            </div>
-            <div class="checkbox">
-                <label><input type="checkbox" checked>Archieves Reports</label>
-            </div>
+   <div class="row">
+    <div class="col-sm-4">
+        <div class="checkbox">
+            <label><input type="checkbox" checked>Used For Billing</label>
         </div>
-         <div class="col-sm-4">
-            <div class="checkbox">
-                <label><input type="checkbox" checked>Used For Billing</label>
-            </div>
-            <div class="checkbox">
-                <label><input type="checkbox" checked>Show Ponits</label>
-            </div>
-            <div class="checkbox">
-                <label><input type="checkbox" checked>Archieves</label>
-            </div>
-            <div class="radio">
-                <label><input type="radio" checked>Archieves Reports</label>
-            </div>
+        <div class="checkbox">
+            <label><input type="checkbox" checked>Show Ponits</label>
         </div>
-         <div class="col-sm-4">
-            <div class="checkbox">
-                <label><input type="checkbox" checked>Used For Billing</label>
-            </div>
-            <div class="checkbox">
-                <label><input type="checkbox" checked>Show Ponits</label>
-            </div>
-            <div class="checkbox">
-                <label><input type="checkbox" checked>Archieves</label>
-            </div>
-            <div class="checkbox">
-                <label><input type="checkbox" checked>Archieves Reports</label>
-            </div>
+        <div class="checkbox">
+            <label><input type="checkbox" checked>Archieves</label>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox" checked>Archieves Reports</label>
         </div>
     </div>
-    <!-- Modal Button -->
-    @if (isset($header) && count($header) > 0)
-    <div class="row">
-        <div class="col-sm-offset-8 col-sm-4"><a data-toggle="modal" data-target="#question" class="btn btn-primary" id="question-button">Add Question</a>
+    <div class="col-sm-4">
+        <div class="checkbox">
+            <label><input type="checkbox" checked>Used For Billing</label>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox" checked>Show Ponits</label>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox" checked>Archieves</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" checked>Archieves Reports</label>
         </div>
     </div>
-     @endif
+    <div class="col-sm-4">
+        <div class="checkbox">
+            <label><input type="checkbox" checked>Used For Billing</label>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox" checked>Show Ponits</label>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox" checked>Archieves</label>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox" checked>Archieves Reports</label>
+        </div>
+    </div>
+</div>
 </div>
 
+<!-- Modal Button -->
+@if (isset($header) && count($header) > 0)
+<div class="row">
+    <div class="col-md-4 col-md-offset-8"><a data-toggle="modal" data-target="#question" class="btn btn-primary" id="question-button">Add Question</a>
+        <a href="{{ URL::to('assesment/preview/'. $assesmentId )}}" class="btn btn-primary">Preview</a>
+    </div>
+</div>
+@endif
 
- <div class="content table-responsive">
+
+
+<div class="content table-responsive">
     <table class="table table-striped">
-    <thead>
-        <th>Topic</th>
-        <th>Question</th>
-        <th>Data</th>
-        <th>Answer</th>
-        <th>Action</th>
-    </thead>
-    @if (isset($quetions) && count($quetions) > 0)
-    <tbody>
-        <tr>
-        @foreach($quetions as $que)
-          <td>{{ $que-> topic }}</td>
-          <td>{{ $que->question_text }}</td>
-          <td>{{ $que->question_data }}</td>
-          <td>{{ $que-> answer_explanation }} </td>
-          <td><a class="btn btn-primary" href="{{ URL::to('question/'.$que->id) }}
-          " role="button">Delete</a></td>
-            <td><button class="edit-modal btn btn-primary" data-id="{{$que->id}}">Edit</button></td>
-        </tr>
-        @endforeach
-    </tbody>
-    @else
-            <tbody>
+        <thead>
+            <th>Topic</th>
+            <th>Question</th>
+            <th>Data</th>
+            <th>Answer</th>
+            <th>Action</th>
+        </thead>
+        @if (isset($quetions) && count($quetions) > 0)
+        <tbody>
+            <tr>
+                @foreach($quetions as $que)
+                <td>{{ $que-> topic }}</td>
+                <td>{{ $que->question_text }}</td>
+                <td>{{ $que->question_data }}</td>
+                <td>{{ $que-> answer_explanation }} </td>
+                <td><a class="btn btn-primary" href="{{ URL::to('question/'.$que->id) }}
+                  " role="button">Delete</a></td>
+                  <td><button class="edit-modal btn btn-primary" data-id="{{$que->id}}">Edit</button></td>
+              </tr>
+              @endforeach
+          </tbody>
+          @else
+          <tbody>
             <tr><td colspan="5" style="text-align: center; ">No questions has been added yet.</td></tr>
-            </tbody>
-    @endif
+        </tbody>
+        @endif
     </table>
 </div>
 
@@ -131,35 +134,35 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Header</h4>
-      </div>
-    <div class="modal-body">
-        <h5>Header name</h5>
-        <form method="POST" id="Save">
-            {{ csrf_field() }}
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" name="header" class="form-control" placeholder="Header name">
-                    @if ($errors->has('header'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('header') }}</strong>
-                    </span>
-                    @endif
-                </div>
-            </div>
+            <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Add Header</h4>
         </div>
+        <div class="modal-body">
+            <h5>Header name</h5>
+            <form method="POST" id="Save">
+                {{ csrf_field() }}
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" id="submitForm" class="btn btn-primary">Save changes</button>
-      </div>
-    </form>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="header" class="form-control" placeholder="Header name">
+                            @if ($errors->has('header'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('header') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="submitForm" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
     </div>
-  </div>
 </div>
 </div>
 <!-- Header Modal End -->
@@ -170,138 +173,138 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Question</h4>
-      </div>
-    <div class="modal-body">
-        <h5>Create</h5>
-        <form method="POST" id="Save_Question">
-            {{ csrf_field() }}
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Your Topic</label>
-                    <input type="text" name="topic" id="topic" class="form-control" placeholder="Topic name">
-                    @if ($errors->has('topic'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('topic') }}</strong>
-                    </span>
-                    @endif
-                </div>
-            </div>
+            <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Add Question</h4>
         </div>
+        <div class="modal-body">
+            <h5>Create</h5>
+            <form method="POST" id="Save_Question">
+                {{ csrf_field() }}
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label for="comment">Questions Text</label>
-                    <textarea class="form-control" rows="5"  id="question_text" name="question_text"></textarea>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Your Topic</label>
+                            <input type="text" name="topic" id="topic" class="form-control" placeholder="Topic name">
+                            @if ($errors->has('topic'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('topic') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Option #1</label>
-                    <input type="text" name="option[]" class="form-control">
-                    @if ($errors->has('option1'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('option1') }}</strong>
-                    </span>
-                    @endif
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="comment">Questions Text</label>
+                            <textarea class="form-control" rows="5"  id="question_text" name="question_text"></textarea>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Option #2</label>
-                    <input type="text" name="option[]" class="form-control">
-                    @if ($errors->has('option2'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('option2') }}</strong>
-                    </span>
-                    @endif
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Option #1</label>
+                            <input type="text" name="option[]" class="form-control">
+                            @if ($errors->has('option1'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('option1') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Option #3</label>
-                    <input type="text" name="option[]" class="form-control">
-                    @if ($errors->has('option3'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('option3') }}</strong>
-                    </span>
-                    @endif
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Option #2</label>
+                            <input type="text" name="option[]" class="form-control">
+                            @if ($errors->has('option2'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('option2') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Option #4</label>
-                    <input type="text" name="option[]" class="form-control">
-                    @if ($errors->has('option4'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('option4') }}</strong>
-                    </span>
-                    @endif
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Option #3</label>
+                            <input type="text" name="option[]" class="form-control">
+                            @if ($errors->has('option3'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('option3') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Option #5</label>
-                    <input type="text" name="option[]" class="form-control">
-                    @if ($errors->has('option5'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('option5') }}</strong>
-                    </span>
-                    @endif
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Option #4</label>
+                            <input type="text" name="option[]" class="form-control">
+                            @if ($errors->has('option4'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('option4') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label for="comment">Question Data</label>
-                    <textarea class="form-control" rows="5"  id="question_data" name="question_data"></textarea>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Option #5</label>
+                            <input type="text" name="option[]" class="form-control">
+                            @if ($errors->has('option5'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('option5') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label for="comment">Answer Explanation</label>
-                    <textarea class="form-control" rows="5"  id="answer_exp" name="answer_exp"></textarea>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="comment">Question Data</label>
+                            <textarea class="form-control" rows="5"  id="question_data" name="question_data"></textarea>
+                        </div>
+                    </div>
                 </div>
-            </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="comment">Answer Explanation</label>
+                            <textarea class="form-control" rows="5"  id="answer_exp" name="answer_exp"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="submitQuestion" class="btn btn-primary">Save changes</button>
+                </div>
+
+            </form>
         </div>
-
-
-        <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" id="submitQuestion" class="btn btn-primary">Save changes</button>
-       </div>
-
-    </form>
     </div>
-  </div>
 </div>
 </div>
 
@@ -315,138 +318,138 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Edit Question</h4>
-      </div>
-    <div class="modal-body">
-        <h5>Create</h5>
-        <form method="POST" id="Edit_Save_Question">
-            {{ csrf_field() }}
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Your Topic</label>
-                    <input type="text" name="topic" id="topic" class="form-control" placeholder="Topic name">
-                    @if ($errors->has('topic'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('topic') }}</strong>
-                    </span>
-                    @endif
-                </div>
-            </div>
+            <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Edit Question</h4>
         </div>
+        <div class="modal-body">
+            <h5>Create</h5>
+            <form method="POST" id="Edit_Save_Question">
+                {{ csrf_field() }}
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label for="comment">Questions Text</label>
-                    <textarea class="form-control" rows="5"  id="question_text" name="question_text"></textarea>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Your Topic</label>
+                            <input type="text" name="topic" id="topic" class="form-control" placeholder="Topic name">
+                            @if ($errors->has('topic'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('topic') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Option #1</label>
-                    <input type="text" name="option[]" class="form-control">
-                    @if ($errors->has('option1'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('option1') }}</strong>
-                    </span>
-                    @endif
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="comment">Questions Text</label>
+                            <textarea class="form-control" rows="5"  id="question_text" name="question_text"></textarea>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Option #2</label>
-                    <input type="text" name="option[]" class="form-control">
-                    @if ($errors->has('option2'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('option2') }}</strong>
-                    </span>
-                    @endif
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Option #1</label>
+                            <input type="text" name="option[]" class="form-control">
+                            @if ($errors->has('option1'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('option1') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Option #3</label>
-                    <input type="text" name="option[]" class="form-control">
-                    @if ($errors->has('option3'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('option3') }}</strong>
-                    </span>
-                    @endif
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Option #2</label>
+                            <input type="text" name="option[]" class="form-control">
+                            @if ($errors->has('option2'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('option2') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Option #4</label>
-                    <input type="text" name="option[]" class="form-control">
-                    @if ($errors->has('option4'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('option4') }}</strong>
-                    </span>
-                    @endif
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Option #3</label>
+                            <input type="text" name="option[]" class="form-control">
+                            @if ($errors->has('option3'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('option3') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Option #5</label>
-                    <input type="text" name="option[]" class="form-control">
-                    @if ($errors->has('option5'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('option5') }}</strong>
-                    </span>
-                    @endif
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Option #4</label>
+                            <input type="text" name="option[]" class="form-control">
+                            @if ($errors->has('option4'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('option4') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label for="comment">Question Data</label>
-                    <textarea class="form-control" rows="5"  id="question_data" name="question_data"></textarea>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Option #5</label>
+                            <input type="text" name="option[]" class="form-control">
+                            @if ($errors->has('option5'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('option5') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label for="comment">Answer Explanation</label>
-                    <textarea class="form-control" rows="5"  id="answer_exp" name="answer_exp"></textarea>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="comment">Question Data</label>
+                            <textarea class="form-control" rows="5"  id="question_data" name="question_data"></textarea>
+                        </div>
+                    </div>
                 </div>
-            </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="comment">Answer Explanation</label>
+                            <textarea class="form-control" rows="5"  id="answer_exp" name="answer_exp"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="submitQuestion" class="btn btn-primary">Save changes</button>
+                </div>
+
+            </form>
         </div>
-
-
-        <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" id="submitQuestion" class="btn btn-primary">Save changes</button>
-       </div>
-
-    </form>
     </div>
-  </div>
 </div>
 </div>
 
@@ -476,12 +479,12 @@
 
 <script type="text/javascript">
 
-var url = window.location.pathname;
-var id = url.substring(url.lastIndexOf('/') + 1);
-var assId = <?php echo $assesmentId ?>;
+    var url = window.location.pathname;
+    var id = url.substring(url.lastIndexOf('/') + 1);
+    var assId = <?php echo $assesmentId ?>;
     $('.side-nav li a').filter(function(){
-          return $(this).data('id') == id;
-    }).parent().addClass('active');
+      return $(this).data('id') == id;
+  }).parent().addClass('active');
 
     if($('.side-nav').find('li').hasClass('active')){
         $('#question-button').show();
@@ -491,32 +494,32 @@ var assId = <?php echo $assesmentId ?>;
 
     $('body').on('click', '#submitForm', function(event){
        event.preventDefault();
-        var registerForm = $("#Save");
-        var formData = registerForm.serialize();
-        var assementId = <?php echo $assesmentId ?>;
-        $( '#name-error' ).html( "" );
-         $('#myModal').modal('toggle');
-        $.ajax({
-            url:'/header/' + assementId,
-            type:'POST',
-            data:formData,
-            success:function(data) {
-                if(data.errors) {
-                    if(data.errors.name){
-                        $( '#name-error' ).html( data.errors.name[0] );
-                    }
+       var registerForm = $("#Save");
+       var formData = registerForm.serialize();
+       var assementId = <?php echo $assesmentId ?>;
+       $( '#name-error' ).html( "" );
+       $('#myModal').modal('toggle');
+       $.ajax({
+        url:'/header/' + assementId,
+        type:'POST',
+        data:formData,
+        success:function(data) {
+            if(data.errors) {
+                if(data.errors.name){
+                    $( '#name-error' ).html( data.errors.name[0] );
                 }
-                if(data.success) {
-                    $('#success-msg').removeClass('hide');
-                    setInterval(function(){
-                        $('#Save').modal('hide');
-                        $('#success-msg').addClass('hide');
-                    }, 3000);
-                }
-                window.location.replace(data);
-            },
-        });
+            }
+            if(data.success) {
+                $('#success-msg').removeClass('hide');
+                setInterval(function(){
+                    $('#Save').modal('hide');
+                    $('#success-msg').addClass('hide');
+                }, 3000);
+            }
+            window.location.replace(data);
+        },
     });
+   });
 
 
     $('body').on('click', '#submitQuestion', function(event){
@@ -549,21 +552,21 @@ var assId = <?php echo $assesmentId ?>;
     });
 
 
-$(document).on('click', '.edit-modal', function(event) {
+    $(document).on('click', '.edit-modal', function(event) {
        event.preventDefault();
-    var id=$(this).data('id');
-    url = "/edit-question/"+id;
-          $.ajax({
-            url: url,
-            method: "get"
-  }).done(function(response) {
-    console.log(response);
+       var id=$(this).data('id');
+       url = "/edit-question/"+id;
+       $.ajax({
+        url: url,
+        method: "get"
+    }).done(function(response) {
+        console.log(response);
     //Setting input values
     /*$("input[name='editID']").val(id);
     $("input[name='company']").val(response.company);
     $("input[name='to']").val(response.to);
     $("input[name='from']").val(response.from);*/
-    });
+});
     $('#edit_question').modal('show');
 });
 </script>
