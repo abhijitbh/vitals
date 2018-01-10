@@ -113,28 +113,28 @@ class QuestionController extends Controller
       }
 
 
-      public function update($request, $id)
+      public function update($id)
       {
         $question = Question::findOrFail($id);
+        print_r($question);
 
-        $question = Question::where('id', $id)->update([
+        /*$question = Question::where('id', $id)->update([
                                                        'topic'=>$data['topic'],
                                                        'question_text'=>$data['question_text'],
                                                        'question_data'=>$data['question_data'],
                                                        'answer_explanation'=>$data['answer_exp'],
-                                                       ]);
+                                                       ]);*/
 
-        $question = QuestionsOption::findOrFail($id);
-        $question->delete();
+        //$question = QuestionsOption::findOrFail($id);
 
-        foreach ($data['option'] as $key => $value) {
+        /*foreach ($data['option'] as $key => $value) {
                 //$status = $request->input('correct') == $key ? 1 : 0;
           QuestionsOption::update([
                                   'question_id' => $question->id,
                                   'option'      => $value,
 
-                                  ]);
-        }
+                                  ]);*/
+        //}
 
        // return redirect()->route('questions.index');
       }

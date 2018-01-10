@@ -558,17 +558,16 @@
        url = "/edit-question/"+id;
        $.ajax({
         url: url,
-        method: "get"
-    }).done(function(response) {
-        console.log(response);
+        method: "GET"
+    }).done(function(data) {
     //Setting input values
-    /*$("input[name='editID']").val(id);
-    $("input[name='company']").val(response.company);
-    $("input[name='to']").val(response.to);
-    $("input[name='from']").val(response.from);*/
+    $('#topic').val('xyz');
+    $('#question_text').val(data.question_text);
+    $('#question_data').val(data.question_data);
+    $('#answer_exp').val(data.answer_explanation);
 });
     $('#edit_question').modal('show');
-});
+  });
 </script>
 </html>
 

@@ -62,7 +62,7 @@ Route::get('/edit/assesment/{id}/header/{hid}', 'QuestionController@editHeader')
 
 Route::get('/question/{id}', 'QuestionController@destroy');
 
-Route::get('/edit-question/{id}', 'QuestionController@editQuestionid');
+Route::get('/edit-question/{id}', 'QuestionController@update');
 
 
 Route::get('/assesment/preview/{id}', 'QuestionController@renderPreview');
@@ -81,3 +81,8 @@ Route::post('/module/{id}', 'AdminController@store');
 Route::post('/approveuser/{id}/{flag}', 'AdminController@approveUser');
 
 //Route::post('/register', 'EmailController@send');
+
+
+Route::get('/api', 'ApiController@api');
+
+Route::get('/chart', 'ApiController@userChartData');
