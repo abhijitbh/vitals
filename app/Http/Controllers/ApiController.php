@@ -48,12 +48,35 @@ class ApiController extends Controller
 	public function userChartData()
 	{
 		$chartlist = DB::table('users')
-            ->select(DB::raw("count(*) as count,MONTHNAME(created_at) as month,YEAR(created_at) as year"))->groupBy('month')->groupBy('year')->get();
+		->select(DB::raw("count(*) as count,MONTHNAME(created_at) as month,YEAR(created_at) as year"))->groupBy('month')->groupBy('year')->get();
 
-		//dd($chartlist);
+		return response()->json($chartlist);
 
+	}
 
-        return response()->json($chartlist);
+	public function userActivityPieChartData()
+	{
+		$userActivityData = DB::table('users_activity')->get();
+
+		$userActivityData = $userActivityData->map(function ($userActivity){
+			$hostData = explode('.', parse_url($userActivity->url, PHP_URL_HOST));
+			$subdomainData['domain'] = array_shift($hostData);
+			return $subdomainData;
+		})->groupBy('domain')->map(function($subdomain){
+			return count($subdomain);
+		});
+
+		return response()->json($userActivityData);
+	}
+
+	public function userLoggedPerday()
+	{
+     	$userLogged = DB::table('users_activity')
+     	->select(DB::raw("COUNT(*) AS Total_User,Date(created_at) AS LoggedDate"))->
+     	groupBy('created_at')->get();
+     	dd($userLogged);
+
+     	//return response()->json($userLogged);
 
 	}
 
