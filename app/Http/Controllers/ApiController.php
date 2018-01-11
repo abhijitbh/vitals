@@ -79,8 +79,8 @@ class ApiController extends Controller
 	{
 
      	$assessment = DB::table('Assessment')
-        ->select(DB::raw("COUNT(*) AS Total_asset,MONTHNAME(created_at) as month"))->
-     	groupBy('month')
+        ->select(DB::raw("COUNT(*) AS Total_asset,MONTHNAME(created_at) as month,YEAR(created_at) as year"))->
+     	groupBy('month')->groupBy('year')
      	->get();
 
      	return response()->json($assessment);
