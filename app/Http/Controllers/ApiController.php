@@ -73,10 +73,16 @@ class ApiController extends Controller
 	{
      	$userLogged = DB::table('users_activity')
      	->select(DB::raw("COUNT(*) AS Total_User,Date(created_at) AS LoggedDate"))->
-     	groupBy('created_at')->get();
-     	dd($userLogged);
+     	groupBy('LoggedDate')->get();
 
-     	//return response()->json($userLogged);
+     	return response()->json($userLogged);
+
+	}
+
+	public function assessmentPerday()
+	{
+
+
 
 	}
 
