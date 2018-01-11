@@ -83,9 +83,9 @@ Route::post('/approveuser/{id}/{flag}', 'AdminController@approveUser');
 //Route::post('/register', 'EmailController@send');
 
 
-Route::get('/api', 'ApiController@api');
+Route::get('/api/user/usercount', 'ApiController@api');
 
-Route::get('/chart', 'ApiController@userChartData');
+Route::get('/api/user/signeduser', 'ApiController@userChartData');
 
 Route::get('/api/user/activity', 'ApiController@userActivityPieChartData');
 

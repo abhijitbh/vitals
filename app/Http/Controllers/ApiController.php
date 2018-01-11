@@ -82,6 +82,8 @@ class ApiController extends Controller
 	public function assessmentPerday()
 	{
 
+     	$assessment = DB::table('Assessment')->get();
+     	dd($assessment);
 
 
 	}
