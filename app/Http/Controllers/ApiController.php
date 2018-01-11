@@ -37,10 +37,6 @@ class ApiController extends Controller
 			$modifiedUserData[] = $userData;
 		}
 
-		//$totalusers = DB::table('users')->selectRaw('count(admin) as count')->get();
-
-	    //return response()->json($totalusers);
-
 		return response()->json($modifiedUserData);
 
 	}
@@ -83,8 +79,8 @@ class ApiController extends Controller
 	{
 
      	$assessment = DB::table('Assessment')
-        ->select(DB::raw("COUNT(*) AS Total_asset,Date(created_at) AS AssetDate"))->
-     	groupBy('AssetDate')
+        ->select(DB::raw("COUNT(*) AS Total_asset,MONTHNAME(created_at) as month"))->
+     	groupBy('month')
      	->get();
 
      	return response()->json($assessment);
