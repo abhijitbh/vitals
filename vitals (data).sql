@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 10, 2018 at 04:34 PM
+-- Generation Time: Jan 11, 2018 at 01:07 PM
 -- Server version: 5.7.20-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -20,22 +20,6 @@ SET time_zone = "+00:00";
 -- Database: `vitals`
 --
 
--- --------------------------------------------------------
-
---
--- Table structure for table `Assessment`
---
-
-CREATE TABLE `Assessment` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `version_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `enchanced_comments` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 --
 -- Dumping data for table `Assessment`
 --
@@ -51,40 +35,12 @@ INSERT INTO `Assessment` (`id`, `name`, `location`, `version_number`, `enchanced
 (24, 'Joshua Mueller', 'Right', 'Nobis veritatis excepteur magnam consequatur Perspiciatis in est dolor maiores suscipit laboris rerum voluptatibus', 'Suscipit magna fugiat incidunt aliquam dolor aut voluptate elit aut', '2018-01-04 09:14:42', '2018-01-04 09:14:42'),
 (25, 'Seth Carter', 'Bottom', 'Est nulla ea enim reprehenderit occaecat ad aliquam officiis consequat Reprehenderit ut pariatur Vel excepteur', 'Quos sed quia adipisicing eum omnis aut doloremque ullam', '2018-01-05 08:16:42', '2018-01-05 08:16:42');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `company`
---
-
-CREATE TABLE `company` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `domain_name` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 --
 -- Dumping data for table `company`
 --
 
 INSERT INTO `company` (`id`, `name`, `domain_name`, `created_at`, `updated_at`) VALUES
 (1, 'Aloha Technology', 'aloha-technology', '2017-12-30 03:14:28', '2017-12-30 03:14:28');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Header`
---
-
-CREATE TABLE `Header` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `aid` int(11) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `Header`
@@ -106,18 +62,6 @@ INSERT INTO `Header` (`id`, `name`, `aid`, `created_at`, `updated_at`) VALUES
 (42, 'Sample', 24, '2018-01-04 09:14:47', '2018-01-04 09:14:47'),
 (43, 'Sample', 25, '2018-01-05 08:16:52', '2018-01-05 08:16:52');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `migrations`
---
-
-CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 --
 -- Dumping data for table `migrations`
 --
@@ -132,19 +76,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (29, '2017_12_28_143320_create_Assessment_table', 1),
 (30, '2017_12_28_163735_create_Header_table', 1);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `modules`
---
-
-CREATE TABLE `modules` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `module_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 --
 -- Dumping data for table `modules`
 --
@@ -155,35 +86,6 @@ INSERT INTO `modules` (`id`, `module_name`, `created_at`, `updated_at`) VALUES
 (3, 'Assessments & Care Plans', NULL, NULL),
 (4, 'Incident Tracking', NULL, NULL),
 (5, 'Billing & Accounts Receivable (A/R)', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `password_resets`
---
-
-CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Questions`
---
-
-CREATE TABLE `Questions` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `topic` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `question_text` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `question_data` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `answer_explanation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `hid` int(11) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `Questions`
@@ -201,20 +103,6 @@ INSERT INTO `Questions` (`id`, `topic`, `question_text`, `question_data`, `answe
 (68, 'Eligendi qui et accusamus officiis reprehenderit elit qui modi quae sed sunt ex sunt sunt non ratione tempora', 'Natus ex praesentium voluptas tempor', 'Non sit voluptate ratione vero minus nostrud provident voluptas temporibus vel', 'Molestias id consectetur ad dolorem ratione in natus qui ut possimus quia eu consequuntur veritatis ea quo ad fuga', 42, '2018-01-04 09:14:54', '2018-01-04 09:14:54'),
 (69, 'Eum unde in saepe repellendus Tempore cillum vero qui do quia minus quis aute illo repellendus', 'Aliquam amet minima laboriosam atque ut qui at sit sapiente proident nulla magna sit commodo eos aliquid', 'Doloremque aut qui enim hic ut qui', 'Velit esse qui aliquip magni adipisicing aut dolor corrupti voluptatem voluptatem eaque laborum qui', 2, '2018-01-04 09:53:40', '2018-01-04 09:53:40'),
 (70, 'Soluta saepe aut id qui magna eaque cumque iste tempor ut', 'Nulla ut at quia nihil qui ea', 'Vel placeat voluptatibus quod maxime velit minima ipsum laboriosam consectetur sapiente magna animi dolor commodo', 'Ratione non maxime est sequi consectetur', 43, '2018-01-05 08:17:02', '2018-01-05 08:17:02');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `questions_option`
---
-
-CREATE TABLE `questions_option` (
-  `id` int(11) NOT NULL,
-  `question_id` int(11) NOT NULL,
-  `value` varchar(1000) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `questions_option`
@@ -367,32 +255,6 @@ INSERT INTO `questions_option` (`id`, `question_id`, `value`, `created_at`, `upd
 (155, 70, 'Excepturi omnis facere in molestiae magna dolores nihil optio deleniti et suscipit voluptatibus animi', '2018-01-05 08:17:02', '2018-01-05 08:17:02'),
 (156, 70, 'Iure qui ad proident ad deleniti in sed irure', '2018-01-05 08:17:02', '2018-01-05 08:17:02');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `postal_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `google_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `about_me` text COLLATE utf8mb4_unicode_ci,
-  `cid` int(11) DEFAULT NULL,
-  `admin` tinyint(4) DEFAULT NULL,
-  `status` tinyint(4) DEFAULT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 --
 -- Dumping data for table `users`
 --
@@ -403,21 +265,6 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `address`, `city`, `coun
 (3, 'Abel Holmes', 'luxomiliqi@hotmail.com', '$2y$10$Yasi9FVCFqKbpZh3oo0iReWvhYiYU59cyNcTJ0J2pXFes2cN99H9i', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, NULL, '2018-12-30 03:15:05', '2018-12-30 03:15:05'),
 (4, 'Suraj', 'suraj@gmail.com', '$2y$10$xbkj7QCstmmkix7cQEDFTedPXgknU1h2I2e1UlGZyhpM9CVIcB6IW', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 'nIAUiTDJOmtWa4oH7RzKa1IRB050ds5Lc49Xw3b4794BdqTbuj0sYXORNPxI', '2017-12-30 03:15:28', '2017-12-30 03:15:28'),
 (5, 'Travis Barrera', 'byjyvoreza@yahoo.com', '$2y$10$BFNKdCAT44gjpZDDcE6Lc.EZOt9aQP91aoHh8mriFJezUyJJJwib6', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, NULL, '2018-01-10 01:50:55', '2018-01-10 01:50:55');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users_activity`
---
-
-CREATE TABLE `users_activity` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ip` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users_activity`
@@ -2484,21 +2331,6 @@ INSERT INTO `users_activity` (`id`, `user_id`, `url`, `ip`, `created_at`, `updat
 (2054, 1, 'http://vitals.com/userproduct', '192.168.8.182', '2018-01-10 03:34:01', '2018-01-10 03:34:01'),
 (2055, 1, 'http://vitals.com/userproduct', '192.168.8.182', '2018-01-10 05:01:18', '2018-01-10 05:01:18');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `user_product`
---
-
-CREATE TABLE `user_product` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `uid` int(11) NOT NULL,
-  `module_id` int(11) NOT NULL,
-  `toggle` tinyint(4) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 --
 -- Dumping data for table `user_product`
 --
@@ -2524,131 +2356,6 @@ INSERT INTO `user_product` (`id`, `uid`, `module_id`, `toggle`, `created_at`, `u
 (26, 5, 4, 0, '2018-01-10 01:50:55', '2018-01-10 01:50:55'),
 (27, 5, 5, 0, '2018-01-10 01:50:55', '2018-01-10 01:50:55');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `Assessment`
---
-ALTER TABLE `Assessment`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `company`
---
-ALTER TABLE `company`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `Header`
---
-ALTER TABLE `Header`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `migrations`
---
-ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `modules`
---
-ALTER TABLE `modules`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `password_resets`
---
-ALTER TABLE `password_resets`
-  ADD KEY `password_resets_email_index` (`email`);
-
---
--- Indexes for table `Questions`
---
-ALTER TABLE `Questions`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `questions_option`
---
-ALTER TABLE `questions_option`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
-
---
--- Indexes for table `users_activity`
---
-ALTER TABLE `users_activity`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user_product`
---
-ALTER TABLE `user_product`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `Assessment`
---
-ALTER TABLE `Assessment`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
---
--- AUTO_INCREMENT for table `company`
---
-ALTER TABLE `company`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `Header`
---
-ALTER TABLE `Header`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
---
--- AUTO_INCREMENT for table `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
---
--- AUTO_INCREMENT for table `modules`
---
-ALTER TABLE `modules`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `Questions`
---
-ALTER TABLE `Questions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
---
--- AUTO_INCREMENT for table `questions_option`
---
-ALTER TABLE `questions_option`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `users_activity`
---
-ALTER TABLE `users_activity`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2056;
---
--- AUTO_INCREMENT for table `user_product`
---
-ALTER TABLE `user_product`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
