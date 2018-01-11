@@ -65,7 +65,7 @@ class ApiController extends Controller
 		})->groupBy('domain')->map(function($subdomain){
 			return count($subdomain);
 		});
-
+        
 		return response()->json($userActivityData);
 	}
 
@@ -82,10 +82,12 @@ class ApiController extends Controller
 	public function assessmentPerday()
 	{
 
-     	$assessment = DB::table('Assessment')->get();
-     	dd($assessment);
+     	$assessment = DB::table('Assessment')
+        ->select(DB::raw("COUNT(*) AS Total_asset,Date(created_at) AS AssetDate"))->
+     	groupBy('AssetDate')
+     	->get();
 
-
-	}
+     	return response()->json($assessment);
+    }
 
 }
