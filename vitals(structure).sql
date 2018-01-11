@@ -141,7 +141,7 @@ CREATE TABLE `questions_option` (
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
