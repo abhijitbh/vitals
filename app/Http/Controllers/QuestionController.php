@@ -67,15 +67,6 @@ class QuestionController extends Controller
    return view('header',['quetions' => $quetions,'header'=> $header,'company' => $company, 'assesmentId'=>$id]);
  }
 
-    // public function editQuestionid(Request $request,$id)
-    // {
-    //     echo "hi";
-    //     echo $id;
-    //     $quetions = Question::where('id', $id)->get();
-    //     print_r($quetions);
-
-    // }
-
     /*public function show($id)
     {
 
@@ -166,6 +157,4 @@ class QuestionController extends Controller
 
         return view('preview', ['users' => $users, 'company' => $company, 'questions'=>$questions, 'assesmentId'=>$id]);
       }
-
-
-    }
+}

@@ -86,4 +86,12 @@ class ApiController extends Controller
      	return response()->json($assessment);
     }
 
+    public function totalquestion()
+    {
+    	$questions = DB::table('Questions')
+    	->select(DB::raw("COUNT(*) AS count"))->get();
+    	
+        return response()->json($questions);
+    }
+
 }

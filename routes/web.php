@@ -92,3 +92,7 @@ Route::get('/api/user/activity', 'ApiController@userActivityPieChartData');
 Route::get('/api/user/logged', 'ApiController@userLoggedPerday');
 
 Route::get('/api/user/assessment-count', 'ApiController@assessmentPerday');
+
+Route::get('/api/user/assessment-count', 'ApiController@assessmentPerday');
+
+Route::get('/api/user/total-question', 'ApiController@totalquestion');
